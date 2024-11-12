@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Vfurniture.Models.SanPhams>
+@{
+    ViewData["title"] = "Danh sách sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Bảng sản phẩm</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <a asp-area="Admin" asp-controller="SanPham" asp-action="Create">Thêm sản phẩm</a>
+          
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="dataTable_filter" class="dataTables_filter">
+                                <label>
+                                    Search:
+                                    <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Mã sản phẩm</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Giá</th>
+                                        <th>Phần trăm giảm giá</th>
+                                        <th>Kích thước</th>
+                                        <th>Trạng thái</th>
+                                        <th>Tác vụ </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.MaSanPham</td>
+                                            <td>@item.TenSanPham</td>
+                                            <td><img src="/images/sanpham/@item.HinhAnh" alt="@item.TenSanPham" width="100" height="100"></td> 
+                                            <td>@item.Gia</td>
+                                            <td>@item.Discount%</td>
+                                            <td>@item.KichThuoc</td>
+                                            <td>@(item.TrangThai == true ? "Hiển thị" : "Không hiển thị")</td>
+                                            <td><button type="button" class="btn btn-success mb-1" asp-controller="SanPham" asp-action="Add">Sửa</button>
+                                            <button type="button" class="btn btn-danger" asp-controller="SanPham" asp-action="Add">Xóa</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+           
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

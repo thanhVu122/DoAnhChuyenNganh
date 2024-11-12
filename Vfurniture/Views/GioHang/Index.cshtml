@@ -1,0 +1,130 @@
+﻿@using Vfurniture.Models.ViewModels
+ @model GioHangsViewModel
+ 
+ 
+<div id="layout-cart">
+    <div class="breadcrumb-shop">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container">
+        <div class="heading_page">
+            <div class="header-page">
+                <h1>Giỏ hàng của bạn</h1>
+            </div>
+        </div>
+        <div class="row pd_page">
+            <div class="col-md-8 col-xs-12 col-sm-8">
+                <div class="list_form_cart">
+
+                    <form action="/cart" method="post" id="cartformpage">
+                        @if (Model.GioHangs.Count > 0)
+                        {
+
+                            <div class="row_cart">
+                                <p class="title_cart">Có <span> sản phẩm</span> trong giỏ hàng</p>
+                                <div class="list_item_cart">
+                                    <div class="table-wrapper">
+                                        <table class="table-cart">
+                                            <tbody>
+                                                @foreach (var item in Model.GioHangs)
+                                                {
+                                                    <tr class="line-item-container">
+                                                        <td class="image">
+                                                            <div class="product_image text-center">
+                                                                <a href="">
+                                                                    <img src="/images/sanpham/@item.HinhAnh" alt="" style="width:110px">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="item" style="padding-left: 30px">
+                                                            <a href="">
+                                                                <h3>@item.SanphamName</h3>
+                                                            </a>
+                                                            <p>
+                                                                <span>@item.GiaMoi</span>
+
+                                                                <del>@item.Gia</del>
+
+                                                            </p>
+                                                            <p class="variant">
+
+                                                                <span class="variant_title">Kích thước: @item.KichThuoc</span>
+
+                                                            </p>
+                                                            <div class="input-group quantity-partent">
+                                                                <a type="button" class="btn btn-outline-secondary qtyminus qty-btn" asp-controller="Giohang" asp-action="congSanpham" asp-route-Id="@item.SanphamId">+</a>
+                                                                <input type="text" class="form-control text-center line-item-qty item-quantity" style="width:20%" value=@item.SoLuong name="SoLuong">
+                                                                <a type="button" class="btn btn-outline-secondary qtyplus qty-btn" asp-controller="Giohang" asp-action="truSanpham" asp-route-Id="@item.SanphamId">-</a>
+                                                            </div>
+                                                            <p class="price float-end">
+                                                                <span class="text">Thành tiền: </span>
+                                                                <span class="line-item-total">@item.GiaMoi</span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="remove position-absolute end-0 me-3" >
+                                                            <a class="cart" asp-controller="Giohang" asp-action="remove" asp-route-Id="@item.SanphamId">
+                                                              <i class="fa fa-times"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                }
+
+                                                
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row_note_order">
+                                <div class="checkout-note clearfix">
+                                    <label for="note" class="note-label">Ghi chú đơn hàng</label>
+                                    <textarea id="note" name="note" rows="8" cols="50"></textarea>
+                                </div>
+                                <div class="check_out_btn">
+                                    <a class="button dark link-continue hidden" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
+                                    <button type="submit" id="update-cart" class="btn-update button dark hidden" name="update" value="">Cập nhật</button>
+                                    <button type="submit" id="checkout" class="btn-checkout button dark hidden" name="checkout" value="">Thanh toán</button>
+                                </div>
+                            </div>
+                        }
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 col-sm-4 order_cart_fix">
+                <div class="wamper_order_cart">
+                    <div class="order_block">
+                        <div class="order_title">
+                            <h2>Thông tin đơn hàng</h2>
+                        </div>
+                        <div class="order_total_price">
+                            <p>Tổng tiền: <span>@Model.GioHangsTotal</span></p>
+                        </div>
+                        <div class="order_cart_action">
+                            <div class="cart-buttons">
+                                <a href="#" class="checkout-btn" name="checkout" value="">Thanh toán</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="countine_order_cart" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
+
+                <div class="cart_note_new">
+                    <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Không rủi ro. Đặt hàng trước, thanh toán sau tại nhà. Miễn phí giao hàng &amp; lắp đặt</strong> tại tất cả quận huyện thuộc TP.HCM, Hà Nội, Khu đô thị Ecopark, Biên Hòa và một số khu vực thuộc Bình Dương (*) </p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i> Đơn hàng của quý khách sẽ được  <strong>giao hàng trong vòng 3 ngày</strong>, vui lòng đợi nhân viên tư vấn xác nhận lịch giao hàng trước khi thực hiện chuyển  khoản đơn hàng </p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Miễn phí 1 đổi 1 - Bảo hành 2 năm - Bảo trì trọn đời</strong> (**)</p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i> Tất cả sản phẩm được thiết kế bởi các chuyên gia thiết kế nội thất đến từ <strong>Đan Mạch và Hàn Quốc</strong></p>
+                    <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Chất lượng Quốc Tế đảm bảo theo tiêu chuẩn</strong> cho người dùng tại Việt Nam</p>
+                   
+
+            </div>
+        </div>
+    </div>
+</div>

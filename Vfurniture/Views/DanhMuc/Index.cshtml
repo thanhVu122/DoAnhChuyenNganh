@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Vfurniture.Models.SanPhams>
+
+@{
+    ViewData["Title"] = "Sản phẩm theo danh muc";
+}
+
+<div class="col-sm-3">
+    @Html.Partial("_SidebarPartial")
+</div>
+
+
+
+<div class="col-sm-9 padding-right">
+
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center">Sản phẩm nổi bật</h2>
+
+        @*     1 san pham *@
+        @foreach (var item in Model)
+        {
+            item.Discount ??= 1; // Gán Discount = 1 nếu Discount đang là null
+            int giamoi = (item.Discount.Value * item.Gia) / 100;
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <a asp-controller="SanPham" asp-action="Deltail" asp-route-id="@item.MaSanPham">
+                            <div class="productinfo text-center">
+                                <span class="discount"> @item.Discount%</span>
+
+                                <img src="~/images/sanpham/@item.HinhAnh" alt="" />
+                                <p class="pt-2">@item.TenSanPham</p>
+
+                                <div class="row p">
+                                    <div class="col-md-6"><h2>@giamoi</h2></div>
+                                    <div class="col-md-6"><h2><del>@item.Gia</del></h2></div>
+                                </div>
+
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+    </div><!--features_items-->
+    <!--/category-tab-->
+
+</div>
