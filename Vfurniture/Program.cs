@@ -31,6 +31,8 @@ builder.Services.AddSession(options =>
 );
 
 var app = builder.Build();
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statuscode={0}");
+
 app.UseSession();
 
 // Configure the HTTP request pipeline.
@@ -44,13 +46,19 @@ app.UseRouting();
 
 app.UseAuthorization();
 app.MapControllerRoute(
-    name: "Areas",
-    pattern: "{area=exists}/{controller=Home}/{action=Index}/{id?}");
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
+app.MapControllerRoute(
+    name: "DanhMuc",
+    pattern: "DanhMuc/{MaDanhMuc?}",
+    defaults: new {  controller = "DanhMuc", action = "Index" }
+);
+
 
 app.MapControllerRoute(
-	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
 

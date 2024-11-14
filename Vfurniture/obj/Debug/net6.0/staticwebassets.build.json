@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pP7OUiy0KA24qBmWCkwDtIdK5UQCfXuzclckg4lf9zU=",
+  "Hash": "6PJVZ+6IHaRMsOFkt5nYEGP7PEeOZMOk+1LI3j++4k4=",
   "Source": "Vfurniture",
   "BasePath": "_content/Vfurniture",
   "Mode": "Default",
@@ -31346,6 +31346,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\404\\404.png"
+    },
+    {
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\404\\error.jpg",
+      "SourceId": "Vfurniture",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
+      "BasePath": "_content/Vfurniture",
+      "RelativePath": "images/404/error.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\404\\error.jpg"
     },
     {
       "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\blog\\socials.png",

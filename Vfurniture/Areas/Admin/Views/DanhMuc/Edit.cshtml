@@ -1,0 +1,39 @@
+﻿@model Vfurniture.Models.DanhMucs
+
+@{
+    ViewData["Title"] = "Chỉnh sửa danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa danh mục</h2>
+
+<div class="container">
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+        <!-- Mã danh mục -->
+        <div class="form-group">
+            <label asp-for="MaDanhMuc"></label>
+            <h3>@Model.MaDanhMuc</h3>
+        </div>
+
+        <!-- Tên danh mục -->
+        <div class="form-group">
+            <label asp-for="TenDanhMuc"></label>
+            <input asp-for="TenDanhMuc" class="form-control" placeholder="Tên danh mục" />
+            <span asp-validation-for="TenDanhMuc" class="text-danger"></span>
+        </div>
+
+        <!-- Trạng thái -->
+        <div class="form-group">
+            <label asp-for="TrangThai"></label>
+            <select asp-for="TrangThai" class="form-control">
+                <option value="true">Hiển thị</option>
+                <option value="false">Không hiển thị</option>
+            </select>
+            <span asp-validation-for="TrangThai" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật danh mục</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>

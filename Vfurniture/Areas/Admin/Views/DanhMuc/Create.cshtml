@@ -1,0 +1,62 @@
+﻿@model DanhMucs
+
+@{
+    ViewData["title"] = "Thêm danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm danh mục</h2>
+
+<div class="container mt-2">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h1 class="h4 text-primary">Thêm danh mục</h1>
+                </div>
+
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!-- Mã danh mục -->
+                    <div class="form-group">
+                        <label asp-for="MaDanhMuc"></label>
+                        <input asp-for="MaDanhMuc" class="form-control" placeholder="Mã danh mục" />
+                        <span asp-validation-for="MaDanhMuc" class="text-danger"></span>
+                    </div>
+
+                    <!-- Tên danh mục -->
+                    <div class="form-group">
+                        <label asp-for="TenDanhMuc"></label>
+                        <input asp-for="TenDanhMuc" class="form-control" placeholder="Tên danh mục" />
+                        <span asp-validation-for="TenDanhMuc" class="text-danger"></span>
+                    </div>
+                    <!-- Trạng thái -->
+                    <div class="form-group">
+                        <label asp-for="TrangThai"></label>
+                        <select asp-for="TrangThai" class="form-control">
+                            <option value="true">Hiển thị</option>
+                            <option value="false">Không hiển thị</option>
+                        </select>
+                        <span asp-validation-for="TrangThai" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">Thêm danh mục</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-secondary btn-block" asp-action="Index">Quay lại</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}

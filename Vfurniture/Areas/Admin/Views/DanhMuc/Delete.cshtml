@@ -1,0 +1,25 @@
+﻿@model Vfurniture.Models.DanhMucs
+
+@{
+    ViewData["Title"] = "Xóa danh mục";
+
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Xác nhận xóa danh mục</h2>
+    <div class="alert alert-warning" role="alert">
+        Bạn có chắc muốn xóa danh mục <strong>@Model.TenDanhMuc</strong> không?
+    </div>
+
+    <div class="mb-3">
+        <p><strong>Mã danh mục:</strong> @Model.MaDanhMuc</p>
+        <p><strong>Tên danh mục:</strong> @Model.TenDanhMuc</p>
+        <p><strong>Trạng thái:</strong> @(Model.TrangThai ? "Hiển thị" : "Không hiển thị")</p>
+    </div>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="MaDanhMuc" />
+        <button type="submit" class="btn btn-danger">Có, Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Không, Quay lại</a>
+    </form>
+</div>
