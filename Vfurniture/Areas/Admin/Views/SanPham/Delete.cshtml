@@ -1,0 +1,29 @@
+﻿@model Vfurniture.Models.SanPhams
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Xác nhận xóa sản phẩm</h2>
+    <div class="alert alert-warning" role="alert">
+        Bạn có chắc muốn xóa sản phẩm <strong>@Model.TenSanPham</strong> không?
+    </div>
+
+    <div class="mb-3">
+        <p><strong>Mã sản phẩm:</strong> @Model.MaSanPham</p>
+        <p><strong>Tên sản phẩm:</strong> @Model.TenSanPham</p>
+        <p><strong>Giá:</strong> @Model.Gia</p>
+        <p><strong>Trạng thái:</strong> @(Model.TrangThai ? "Hiển thị" : "Không hiển thị")</p>
+        <img src="/images/sanpham/@Model.HinhAnh" alt="@Model.TenSanPham" width="150" />
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="MaSanPham" />
+
+        <button type="submit" class="btn btn-danger">Có, Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Không, Quay lại</a>
+    </form>
+</div>

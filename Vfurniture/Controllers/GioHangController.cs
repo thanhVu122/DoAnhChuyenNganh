@@ -20,7 +20,7 @@ namespace Vfurniture.Controllers
             GioHangsViewModel cartVM = new()
             {
                 GioHangs = gioHangsItem,
-                GioHangsTotal = gioHangsItem.Sum(g => g.Gia * g.SoLuong)
+                GioHangsTotal = gioHangsItem.Sum(g => (g.Gia ?? 0) * g.SoLuong )
             };
             return View(cartVM);
         }

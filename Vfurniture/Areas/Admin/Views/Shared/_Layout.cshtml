@@ -336,6 +336,7 @@
                     </ul>
 
                 </nav>
+                @Html.Partial("_NotificationPartial")
                 @RenderBody()
             </div>
         </div>
@@ -353,6 +354,7 @@
     <!-- <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
     <!-- Page level custom scripts -->
     <!-- <script src="js/demo/datatables-demo.js"></script> -->
+    @await RenderSectionAsync("Scripts", required: false);
 </body>
 
 </html>

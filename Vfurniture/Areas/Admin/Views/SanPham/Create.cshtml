@@ -15,13 +15,10 @@
                     <h1 class="h4 text-primary">Thêm sản phẩm</h1>
                 </div>
 
-                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <form asp-action="Create"  enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <!-- Mã sản phẩm -->
-                    <div class="form-group">
-                        <label asp-for="MaSanPham"></label>
-                        <input asp-for="MaSanPham" class="form-control" readonly />
-                        <span asp-validation-for="MaSanPham" class="text-danger"></span>
-                    </div>
+                 
 
                     <!-- Tên sản phẩm -->
                     <div class="form-group">
@@ -32,10 +29,12 @@
 
                     <!-- Mã danh mục -->
                     <div class="form-group">
-                        <label asp-for="MaDanhMuc"></label>
-                        <input asp-for="MaDanhMuc" class="form-control" placeholder="Mã danh mục" />
+                        <select asp-for="MaDanhMuc" asp-items="ViewBag.dm" class="form-control">
+                            <option value="">Chọn danh mục</option>
+                        </select>
                         <span asp-validation-for="MaDanhMuc" class="text-danger"></span>
                     </div>
+
 
                     <!-- Giá -->
                     <div class="form-group">
@@ -55,34 +54,35 @@
                     <div class="form-group">
                         <label asp-for="KichThuoc"></label>
                         <input asp-for="KichThuoc" class="form-control" placeholder="Kích thước" />
-                        <span asp-validation-for="KichThuoc" class="text-danger"></span>
+                    
                     </div>
 
                     <!-- Mô tả kích thước -->
                     <div class="form-group">
                         <label asp-for="MoTaKichThuoc"></label>
                         <textarea asp-for="MoTaKichThuoc" class="form-control" rows="2" placeholder="Mô tả kích thước"></textarea>
-                        <span asp-validation-for="MoTaKichThuoc" class="text-danger"></span>
+                       
                     </div>
 
                     <!-- Mô tả chất liệu -->
                     <div class="form-group">
                         <label asp-for="MoTaChatLieu"></label>
                         <textarea asp-for="MoTaChatLieu" class="form-control" rows="2" placeholder="Mô tả chất liệu"></textarea>
-                        <span asp-validation-for="MoTaChatLieu" class="text-danger"></span>
+                       
                     </div>
 
                     <!-- Hình ảnh -->
                     <div class="form-group">
                         <label asp-for="HinhAnh"></label>
-                        <input asp-for="imagesLoad" type="file" class="form-control" />
+                        <input asp-for="imagesLoad" type="file" class="form-control-file" />
                         <span asp-validation-for="imagesLoad" class="text-danger"></span>
+              
                     </div>
 
                     <!-- Danh sách hình ảnh -->
                     <div class="form-group">
                         <label asp-for="DanhSachHinhAnh"></label>
-                        <input asp-for="DanhSachHinhAnh" type="file" multiple class="form-control" />
+                        <input asp-for="DanhSachHinhAnh" type="file" multiple class="form-control-file" />
                         <span asp-validation-for="DanhSachHinhAnh" class="text-danger"></span>
                     </div>
 
@@ -94,18 +94,10 @@
                     </div>
 
                     <!-- Ngày thêm (chỉ hiển thị, không cho chỉnh sửa) -->
-                    <div class="form-group">
-                        <label asp-for="NgayTao"></label>
-                        <input asp-for="NgayTao" class="form-control" readonly />
-                        <span asp-validation-for="NgayTao" class="text-danger"></span>
-                    </div>
+                
 
                     <!-- Ngày cập nhật (chỉ hiển thị, không cho chỉnh sửa) -->
-                    <div class="form-group">
-                        <label asp-for="NgayCapNhat"></label>
-                        <input asp-for="NgayCapNhat" class="form-control" readonly />
-                        <span asp-validation-for="NgayCapNhat" class="text-danger"></span>
-                    </div>
+                  
 
                     <!-- Trạng thái -->
                     <div class="form-group">
@@ -131,9 +123,9 @@
     </div>
 </div>
 
-@* @section Scripts {
+@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        
     }
 }
- *@

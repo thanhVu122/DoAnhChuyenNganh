@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Vfurniture",
+    "\\Vfurniture\\Areas",
+    "\\Vfurniture\\Areas\\Admin",
+    "\\Vfurniture\\Areas\\Admin\\Controllers"
   ],
   "SelectedNode": "\\Vfurniture.sln",
   "PreviewInSolutionExplorer": false

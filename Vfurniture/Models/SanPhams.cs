@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Http;
+using Vfurniture.Reponsitory.Validation;
 
 namespace Vfurniture.Models
 {
@@ -9,47 +11,65 @@ namespace Vfurniture.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Mã sản phẩm")]
-        public int MaSanPham { get; set; } // Mã sản phẩm, khóa chính
+        public int MaSanPham { get; set; }
 
-        [Required]
-        [StringLength(300)]
+        [Required(ErrorMessage = "Tên sản phẩm không được để trống")]
+        [StringLength(300, ErrorMessage = "Tên sản phẩm không được vượt quá 300 ký tự")]
         [DisplayName("Tên sản phẩm")]
-        public string TenSanPham { get; set; } // Tên sản phẩm
+        public string TenSanPham { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng chọn danh mục")]
         [ForeignKey("DanhMuc")]
-        public string MaDanhMuc { get; set; } // Mã danh mục, khóa ngoại
+        public string MaDanhMuc { get; set; }
+
+        [Required(ErrorMessage = "Giá không được để trống")]
+        [Range(1000, int.MaxValue, ErrorMessage = "Giá phải lớn hơn hoặc bằng 1000")]
         [DisplayName("Giá")]
-        public int Gia { get; set; } // Giá từng sản phẩm
+        [DisplayFormat(DataFormatString = "{0:#,0₫}", ApplyFormatInEditMode = true)]
+        public int? Gia { get; set; }
+
+        [Range(0, 100, ErrorMessage = "Phần trăm giảm giá phải trong khoảng 0 đến 100")]
         [DisplayName("Phần trăm giảm giá")]
-        public int? Discount { get; set; } // Phần trăm giảm giá, cho phép null
+        public int? Discount { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200, ErrorMessage = "Kích thước không được vượt quá 200 ký tự")]
         [DisplayName("Kích thước")]
-        public string? KichThuoc { get; set; } // Kích thước từng sản phẩm
-        [DisplayName("Mô tả kích thước")]
-        public string? MoTaKichThuoc { get; set; } // Phần mô tả kích thước của sản phẩm
-        [DisplayName("Mô tả chất liệu")]
-        public string? MoTaChatLieu { get; set; } // Phần mô tả chất liệu của sản phẩm
+        public string? KichThuoc { get; set; }
 
+        [DisplayName("Mô tả kích thước")]
+        public string? MoTaKichThuoc { get; set; }
+
+        [DisplayName("Mô tả chất liệu")]
+        public string? MoTaChatLieu { get; set; }
+
+        
         [Column(TypeName = "varchar(MAX)")]
         [DisplayName("Hình ảnh")]
-        public string HinhAnh { get; set; } // Hình ảnh chính của sản phẩm
+        public string HinhAnh { get; set; }
 
         [Column(TypeName = "varchar(MAX)")]
         [DisplayName("Danh sách hình ảnh")]
-        public string? DanhSachHinhAnh { get; set; } // Danh sách hình ảnh chi tiết của sản phẩm
+        public string? DanhSachHinhAnh { get; set; }
+
         [DisplayName("Mô tả")]
-        public string? Mota { get; set; } // Các mô tả chi tiết của sản phẩm
+        public string? Mota { get; set; }
+
         [DisplayName("Ngày thêm")]
-        public DateTime NgayTao { get; set; } // Ngày thêm sản phẩm
+        [DataType(DataType.DateTime)]
+        public DateTime NgayTao { get; set; } = DateTime.Now;
+
         [DisplayName("Ngày cập nhật")]
-        public DateTime NgayCapNhat { get; set; } // Ngày cập nhật sản phẩm
+        [DataType(DataType.DateTime)]
+        public DateTime NgayCapNhat { get; set; } = DateTime.Now;
+
         [DisplayName("Trạng thái")]
-        public bool TrangThai { get; set; } // Trạng thái của danh mục (true: hiển thị, false: ẩn)
-        // Điều hướng tới DanhMuc
+        public bool TrangThai { get; set; }
+
         public virtual DanhMucs DanhMuc { get; set; }
+
+        // Not mapped property for file upload
         [NotMapped]
-        [FileExtensions]
+        [FileExtension]
         public IFormFile imagesLoad { get; set; }
     }
 }

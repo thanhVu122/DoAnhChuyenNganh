@@ -1,0 +1,78 @@
+﻿@model Vfurniture.Models.SanPhams
+
+@{
+    ViewData["Title"] = "Chỉnh sửa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa sản phẩm</h2>
+
+<div class="container">
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="MaSanPham" />
+
+        <!-- Tên sản phẩm -->
+        <div class="form-group">
+            <label asp-for="TenSanPham"></label>
+            <input asp-for="TenSanPham" class="form-control" placeholder="Tên sản phẩm" />
+            <span asp-validation-for="TenSanPham" class="text-danger"></span>
+        </div>
+
+        <!-- Danh mục -->
+        <div class="form-group">
+            <label>Danh mục</label>
+            <select asp-for="MaDanhMuc" class="form-control" asp-items="ViewBag.dm"></select>
+            <span asp-validation-for="MaDanhMuc" class="text-danger"></span>
+        </div>
+
+        <!-- Giá -->
+        <div class="form-group">
+            <label asp-for="Gia"></label>
+            <input asp-for="Gia" class="form-control" placeholder="Giá" />
+            <span asp-validation-for="Gia" class="text-danger"></span>
+        </div>
+
+        <!-- Phần trăm giảm giá -->
+        <div class="form-group">
+            <label asp-for="Discount"></label>
+            <input asp-for="Discount" class="form-control" placeholder="Phần trăm giảm giá" />
+            <span asp-validation-for="Discount" class="text-danger"></span>
+        </div>
+
+        <!-- Kích thước -->
+        <div class="form-group">
+            <label asp-for="KichThuoc"></label>
+            <input asp-for="KichThuoc" class="form-control" placeholder="Kích thước" />
+            <span asp-validation-for="KichThuoc" class="text-danger"></span>
+        </div>
+
+        <!-- Hình ảnh -->
+        <div class="form-group">
+            <label>Hình ảnh hiện tại:</label><br />
+            <img src="/images/sanpham/@Model.HinhAnh" alt="@Model.TenSanPham" width="100" height="100" /><br /><br />
+            <label asp-for="imagesLoad"></label>
+            <input asp-for="imagesLoad" type="file" class="form-control" />
+            <span asp-validation-for="imagesLoad" class="text-danger"></span>
+        </div>
+
+        <!-- Mô tả -->
+        <div class="form-group">
+            <label asp-for="Mota"></label>
+            <textarea asp-for="Mota" class="form-control" rows="3" placeholder="Mô tả"></textarea>
+            <span asp-validation-for="Mota" class="text-danger"></span>
+        </div>
+
+        <!-- Trạng thái -->
+        <div class="form-group">
+            <label asp-for="TrangThai"></label>
+            <select asp-for="TrangThai" class="form-control">
+                <option value="true">Hiển thị</option>
+                <option value="false">Không hiển thị</option>
+            </select>
+            <span asp-validation-for="TrangThai" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>

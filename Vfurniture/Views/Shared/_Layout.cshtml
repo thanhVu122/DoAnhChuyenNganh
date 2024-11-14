@@ -136,8 +136,10 @@
         </section>
     <section>
         <div class="container">
+            @await Html.PartialAsync("~/Areas/Admin/Views/Shared/_AdminValidation.cshtml")
+
             <div class="row">
-                @Html.Partial("_NotificationPartial")
+               
                 @RenderBody()
             </div>
         </div>

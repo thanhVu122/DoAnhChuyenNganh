@@ -19,8 +19,13 @@
         @*     1 san pham *@
         @foreach (var item in Model)
         {
-            item.Discount ??= 1; // Gán Discount = 1 nếu Discount đang là null
-            int giamoi = (item.Discount.Value * item.Gia) / 100;
+            item.Discount ??= 1;
+
+          
+            int giaValue = item.Gia ?? 1000; 
+
+         
+            int giamoi = (item.Discount.Value * giaValue) / 100;
             <div class="col-sm-4">
                 <div class="product-image-wrapper">
                     <div class="single-products">

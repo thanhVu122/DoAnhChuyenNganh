@@ -42,6 +42,8 @@
                                         <th>Giá</th>
                                         <th>Phần trăm giảm giá</th>
                                         <th>Kích thước</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Ngày cập nhật</th>
                                         <th>Trạng thái</th>
                                         <th>Tác vụ </th>
                                     </tr>
@@ -57,9 +59,12 @@
                                             <td>@item.Gia</td>
                                             <td>@item.Discount%</td>
                                             <td>@item.KichThuoc</td>
+                                            <td>@item.NgayTao.Date</td>
+                                            <td>@item.NgayCapNhat.Date</td>
                                             <td>@(item.TrangThai == true ? "Hiển thị" : "Không hiển thị")</td>
-                                            <td><button type="button" class="btn btn-success mb-1" asp-controller="SanPham" asp-action="Add">Sửa</button>
-                                            <button type="button" class="btn btn-danger" asp-controller="SanPham" asp-action="Add">Xóa</button></td>
+                                            <td><a class="btn btn-success mb-1" asp-controller="SanPham" asp-action="Edit"asp-route-id="@item.MaSanPham">Sửa</a>
+                                                <a  class="btn btn-danger" asp-controller="SanPham" asp-action="Delete" asp-route-Id="@item.MaSanPham">Xóa</a>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
