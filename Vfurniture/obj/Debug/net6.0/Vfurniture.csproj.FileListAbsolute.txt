@@ -57,7 +57,6 @@ D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\staticwebassets.developm
 D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\scopedcss\bundle\Vfurniture.styles.css
 D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\scopedcss\projectbundle\Vfurniture.bundle.scp.css
-D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\Vfurniture.csproj.Up2Date
 D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\Vfurniture.dll
 D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\refint\Vfurniture.dll
 D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\Vfurniture.pdb
@@ -243,3 +242,5 @@ D:\DoAn2024-2025\Vfurniture\Vfurniture\bin\Debug\net6.0\tr\Microsoft.CodeAnalysi
 D:\DoAn2024-2025\Vfurniture\Vfurniture\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\DoAn2024-2025\Vfurniture\Vfurniture\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\DoAn2024-2025\Vfurniture\Vfurniture\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\DoAn2024-2025\Vfurniture\Vfurniture\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\DoAn2024-2025\Vfurniture\Vfurniture\obj\Debug\net6.0\Vfurniture.csproj.Up2Date

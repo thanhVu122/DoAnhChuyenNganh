@@ -1,0 +1,58 @@
+﻿@model NguoiDungModel
+@{
+    ViewData["Title"] = "Đăng nhập";
+
+}
+
+<div class="container">
+    <div class="content-bottom ">
+        <div class="row g-0">
+            <div class="col-sm-6 col-md-6">
+                <div class="inner">
+                    <h2>Khách hàng mới</h2>
+                    <div class="thongbao">
+                        <p>
+                            <b>Đăng ký tài khoản</b>
+                        </p>
+                        <p>
+                            Bằng cách tạo một tài khoản bạn sẽ có thể mua sắm nhanh hơn, được
+                            cập nhật về tình trạng một đơn đặt hàng, và theo dõi các đơn đặt
+                            hàng bạn đã thực hiện trước đó.
+                        </p>
+                        <a rel="" href="/formDangKi.html" class="button">Đăng ký</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 ">
+                <div class="dangnhap">
+                    <form action="Login ">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <h4>Đăng nhập</h4>
+                        <div class="from-group">
+                            <label asp-for="TaiKhoan"></label>
+                            <input asp-for="TaiKhoan" placeholder="Tài khoản" class="form-control" />
+                            <span class="form-message" asp-validation-for="TaiKhoan"></span>
+                        </div>
+                        <div class="from-group">
+                            <label asp-for="MatKhau"></label>
+                            <input asp-for="MatKhau" placeholder="Mật khẩu" class="form-control" type="password" />
+                            <span class="form-message" asp-validation-for="MatKhau"></span>
+                        </div>
+                        <button class="btn btn-default">Đăng nhập</button>
+                        @*  <div class="lienket">
+                        <div class="gg">
+                        <a href="#"><i class="fa-brands fa-google"></i> Google </a>
+                        </div>
+                        <div class="fb">
+                        <a href="#" class="fb">
+                        <i class="fa-brands fa-facebook-f"></i> Facebook
+                        </a>
+                        </div>
+                        </div> *@
+                        <p><a href="" class="quenmk">Quên mật khẩu?</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

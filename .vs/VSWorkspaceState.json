@@ -4,7 +4,8 @@
     "\\Vfurniture",
     "\\Vfurniture\\Areas",
     "\\Vfurniture\\Areas\\Admin",
-    "\\Vfurniture\\Areas\\Admin\\Controllers"
+    "\\Vfurniture\\Areas\\Admin\\Controllers",
+    "\\Vfurniture\\Controllers"
   ],
   "SelectedNode": "\\Vfurniture.sln",
   "PreviewInSolutionExplorer": false

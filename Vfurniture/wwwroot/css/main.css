@@ -2774,3 +2774,25 @@ h2.title {
 .table-cart {
     width: 100%;
 }
+
+.thanhPhai .login .dangnhap .form input[type=email], .thanhPhai .login .dangnhap .form input[type=password], .thanhPhai .login .dangnhap .form input[type=text] {
+    width: 100%;
+    height: 55px;
+    border: 1px solid transparent;
+    background: #ededed;
+    color: #434343;
+    padding: 0 20px;
+    font-weight: 500;
+    -webkit-appearance: none;
+}
+.login .thanhTrai .dau span{
+    font-size: 54px;
+    font-weight: 700;
+    margin: 0px 0;
+    line-height: initial;
+}
+
+.login .thanhPhai .dangnhap {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+}

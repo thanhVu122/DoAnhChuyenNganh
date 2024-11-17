@@ -30064,6 +30064,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\sanpham\38f7d12b-2169-407b-8297-4ebb5724a193_Ảnh chụp màn hình 2023-10-22 203143.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\sanpham\65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Vfurniture</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Vfurniture</BasePath>
+      <RelativePath>images/sanpham/65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\sanpham\65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\sanpham\7c76b74b-a5f5-4b3b-b79d-fbaab37d884d_Ảnh chụp màn hình 2023-10-29 225254.png))">
       <SourceType>Package</SourceType>
       <SourceId>Vfurniture</SourceId>

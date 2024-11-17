@@ -7,6 +7,7 @@ namespace Vfurniture.Reponsitory
     {
         public static void SeedingData(DataContext _context)
         {
+
             _context.Database.Migrate();
 
             // Danh sách các danh mục cần thêm

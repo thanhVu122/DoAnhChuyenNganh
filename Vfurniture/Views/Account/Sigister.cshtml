@@ -1,0 +1,96 @@
+﻿@model NguoiDungModel
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<div class="container login">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 thanhTrai">
+            <div class="box">
+                <div class="dau" style="font-size: 54px;
+    font-weight: 700;">
+                    <span>Tạo tài khoản</span>
+                </div>
+                <div class="than">
+                    <ul class="than-list">
+                        <li>
+                            <a href="./formLogin.html">Đăng nhập</a>
+                            <!-- <a href="#">Đăng kí</a> -->
+                        </li>
+                        <li><a href="">Lấy lại mật khẩu</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-sx-12 thanhPhai">
+            <div class="dangnhap" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 10px;">
+                <h4>Đăng kí tài khoản</h4>
+                <p class="text">
+                    Nếu bạn đã có một tài khoản với chúng tôi, vui lòng đăng nhập vào
+                    trang
+                    <a href="formLogin.html" class="dn">Đăng nhập</a>
+                </p>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form asp-action="Sigister" class="form" id="form-1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="from-group">
+                                <label for="name" class="form-label" asp-for="TenNguoiDung"></label>
+                                <input type="text" asp-for="TenNguoiDung" asp- placeholder="Họ và tên" class="form-control">
+                                <span class="text-danger" asp-validation-for="TenNguoiDung"></span>
+                            </div>
+                            <div class="from-group">
+                                <label for="sdt" class="form-label" asp-for="SoDienThoai"></label>
+                                <input type="text" asp-for="SoDienThoai" placeholder="Số điện thoại" class="form-control">
+                                <span class="text-danger" asp-validation-for="SoDienThoai"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NgaySinh"></label>
+                                <input type="date" asp-for="NgaySinh" class="form-control" />
+                                <span class="text-danger" asp-validation-for="NgaySinh"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="from-group">
+                                <label for="email" class="form-label" asp-for="Email"></label>
+                                <input type="email" name="Email" asp-for="Email" placeholder="Email" class="form-control" id="email">
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                            </div>
+                            <div class="from-group">
+                                <label asp-for="TaiKhoan" class="form-label"></label>
+                                <input asp-for="TaiKhoan" placeholder="Tài khoản" class="form-control" />
+                                <span class="text-danger" asp-validation-for="TaiKhoan"></span>
+                            </div>
+                            <div class="from-group">
+                                <label asp-for="MatKhau" class="form-label"></label>
+                                <input asp-for="MatKhau" placeholder="Mật khẩu" class="form-control" type="password" />
+                                <span class="text-danger" asp-validation-for="MatKhau"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-default">Đăng kí</button>
+                </form>
+                <div class="lienket">
+                    <div class="gg">
+                        <a href="#"><i class="fa-brands fa-google"></i> Google </a>
+                    </div>
+                    <div class="fb">
+                        <a href="#" class="fb">
+                            <i class="fa-brands fa-facebook-f"></i> Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}
+
