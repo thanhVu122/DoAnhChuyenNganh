@@ -6,7 +6,7 @@
 		public string SanphamName { get; set; }
 		public long SanphamId { get; set; }
 		public int SoLuong { get; set; }
-		public int? Gia { get; set; }
+		public decimal? Gia { get; set; }
 		public int? Discount { get; set; } // Phần trăm giảm giá, cho phép null
 		public decimal? tongTien
 		{

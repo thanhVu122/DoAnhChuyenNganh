@@ -12,7 +12,10 @@ namespace Vfurniture.Reponsitory
         }
         public DbSet<DanhMucs> DanhMucs { get; set; }
         public DbSet<SanPhams> SanPhams { get; set; }
-       
+        public DbSet<DatHang> DatHangs{ get; set; }
+        public DbSet<DatHangChiTiet> DatHangChiTiets { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Cấu hình các mối quan hệ hoặc các ràng buộc nếu cần.

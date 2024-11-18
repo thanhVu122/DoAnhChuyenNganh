@@ -1,7 +1,7 @@
 ﻿@using Vfurniture.Models.ViewModels
  @model GioHangsViewModel
- 
- 
+
+
 <div id="layout-cart">
     <div class="breadcrumb-shop">
         <div class="breadcrumbs">
@@ -66,16 +66,14 @@
                                                                 <span class="line-item-total">@item.GiaMoi</span>
                                                             </p>
                                                         </td>
-                                                        <td class="remove position-absolute end-0 me-3" >
+                                                        <td class="remove position-absolute end-0 me-3">
                                                             <a class="cart" asp-controller="Giohang" asp-action="remove" asp-route-Id="@item.SanphamId">
-                                                              <i class="fa fa-times"></i>
+                                                                <i class="fa fa-times"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
 
                                                 }
-
-                                                
 
                                             </tbody>
                                         </table>
@@ -90,7 +88,10 @@
                                 <div class="check_out_btn">
                                     <a class="button dark link-continue hidden" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
                                     <button type="submit" id="update-cart" class="btn-update button dark hidden" name="update" value="">Cập nhật</button>
-                                    <button type="submit" id="checkout" class="btn-checkout button dark hidden" name="checkout" value="">Thanh toán</button>
+                                    @*                                      @if (User.Identity?.IsAuthenticated ?? false)
+                                {
+                                <a asp-controller="Checkout" asp-action="Checkout" class="btn-checkout button dark hidden" >Thanh toán</a>
+                                } *@
                                 </div>
                             </div>
                         }
@@ -109,7 +110,14 @@
                         </div>
                         <div class="order_cart_action">
                             <div class="cart-buttons">
-                                <a href="#" class="checkout-btn" name="checkout" value="">Thanh toán</a>
+                                @if (User.Identity?.IsAuthenticated ?? false)
+                                {
+                                    <a asp-controller="Checkout" asp-action="Checkout" class="btn-checkout button dark">Thanh toán</a>
+                                }
+                                else
+                                {
+                                    <p>Bạn cần <a asp-controller="Account" asp-action="Login">đăng nhập</a> để thanh toán.</p>
+                                }
                             </div>
                         </div>
                     </div>
@@ -122,9 +130,9 @@
                     <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Miễn phí 1 đổi 1 - Bảo hành 2 năm - Bảo trì trọn đời</strong> (**)</p>
                     <p><i class="fa fa-check" aria-hidden="true"></i> Tất cả sản phẩm được thiết kế bởi các chuyên gia thiết kế nội thất đến từ <strong>Đan Mạch và Hàn Quốc</strong></p>
                     <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Chất lượng Quốc Tế đảm bảo theo tiêu chuẩn</strong> cho người dùng tại Việt Nam</p>
-                   
 
+
+                </div>
             </div>
         </div>
     </div>
-</div>

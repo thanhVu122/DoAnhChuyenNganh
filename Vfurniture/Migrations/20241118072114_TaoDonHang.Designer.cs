@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vfurniture.Reponsitory;
 
@@ -11,9 +12,10 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241118072114_TaoDonHang")]
+    partial class TaoDonHang
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -273,14 +275,14 @@ namespace Vfurniture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<decimal?>("Gia")
+                    b.Property<decimal>("Gia")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("MaDatHang")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("MaSanPham")
-                        .HasColumnType("bigint");
+                    b.Property<int>("MaSanPham")
+                        .HasColumnType("int");
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");

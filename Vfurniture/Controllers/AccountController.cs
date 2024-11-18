@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Vfurniture.Models;
+using Vfurniture.Models.ViewModels;
 
 namespace Vfurniture.Controllers
 {
@@ -16,20 +17,31 @@ namespace Vfurniture.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public IActionResult Login(string returnURL)
         {
-            return View();
+            return View(new LoginViewModel { ReturnURL = returnURL });
         }
-        public async Task<IActionResult> Login()
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager
+                    .PasswordSignInAsync(loginViewModel.TaiKhoan, loginViewModel.MatKhau, false, false);
+                if (result.Succeeded)
+                {
+                    return Redirect(loginViewModel.ReturnURL ?? "/");
+                }
+                ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng");
+            }
+            return View(loginViewModel);
         }
         public IActionResult Sigister()
         {
             return View();
         }
         [HttpPost]
-            public async Task<IActionResult> Sigister(NguoiDungModel user)
+        public async Task<IActionResult> Sigister(NguoiDungModel user)
         {
             if (ModelState.IsValid)
             {
@@ -37,13 +49,14 @@ namespace Vfurniture.Controllers
                 {
                     UserName = user.TaiKhoan,
                     Email = user.Email,
-                    
+
                 };
 
-                IdentityResult result = await _userManager.CreateAsync(newUser);
-                if (result.Succeeded) {
-                    TempData["success"]
-                    return RedirectToAction("/Admin/Home");
+                IdentityResult result = await _userManager.CreateAsync(newUser, user.MatKhau);
+                if (result.Succeeded)
+                {
+                    TempData["success"] = "Tạo tài khoản thành công";
+                    return Redirect("/account/Login");
                 }
                 foreach (IdentityError error in result.Errors)
                 {
@@ -51,6 +64,12 @@ namespace Vfurniture.Controllers
                 }
             }
             return View(user);
+        }
+        public async Task<IActionResult> Logout(string returnURL = "/")
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect(returnURL);
+
         }
 
     }

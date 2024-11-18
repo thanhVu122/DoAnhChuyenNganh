@@ -14,7 +14,7 @@
                 <div class="than">
                     <ul class="than-list">
                         <li>
-                            <a href="./formLogin.html">Đăng nhập</a>
+                            <a asp-action="Index">Đăng nhập</a>
                             <!-- <a href="#">Đăng kí</a> -->
                         </li>
                         <li><a href="">Lấy lại mật khẩu</a></li>
@@ -32,7 +32,7 @@
                     <a href="formLogin.html" class="dn">Đăng nhập</a>
                 </p>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <form asp-action="Sigister" class="form" id="form-1">
+                <form asp-action="Sigister" class="form" id="form-1" method="post">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="from-group">
