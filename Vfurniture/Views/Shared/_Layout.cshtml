@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a asp-controller="Home" asp-action="Index" ><img src="~/images/home/Vfuniture.png" alt="" /></a>
+                            <a asp-controller="Home" asp-action="Index"><img src="~/images/home/Vfuniture.png" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                         </div>
@@ -69,11 +69,11 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                               
-                                <li><a asp-controller="Giohang"  asp-action="Index"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
-                                @if(User.Identity?.IsAuthenticated ?? false)
+
+                                <li><a asp-controller="Giohang" asp-action="Index"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                                @if (User.Identity?.IsAuthenticated ?? false)
                                 {
-                                
+
                                     <li><a asp-controller="Account"><i class="fa fa-user"></i>@User.Identity.Name</a></li>
                                     <li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-crosshairs"></i>Thoát</a></li>
                                 }
@@ -133,8 +133,12 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Tìm kiếm" />
+                            <form asp-controller="SanPham" asp-action="TimKiem" method="get">
+                                <input type="text" name="keyword" placeholder="Tìm kiếm..." value="@ViewData["CurrentFilter"]" />
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
+
 
                     </div>
                 </div>
@@ -144,13 +148,13 @@
 
     <section id="slider">
         @Html.Partial("_CarsouelPartial")
-        </section>
+    </section>
     <section>
         <div class="container">
             @await Html.PartialAsync("_NotificationPartial")
 
             <div class="row">
-               
+
                 @RenderBody()
             </div>
         </div>

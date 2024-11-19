@@ -1,0 +1,60 @@
+﻿@model Vfurniture.Models.AppNguoiDung
+
+@{
+    ViewData["Title"] = "Chỉnh sửa người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa người dùng</h2>
+
+<div class="container mt-2">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h1 class="h4 text-primary">Chỉnh sửa thông tin</h1>
+                </div>
+
+                <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="UserName"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="RoleId">Quyền</label>
+                        <select id="RoleId" name="RoleId" asp-items="ViewBag.Roles" class="form-control">
+                            <option value="">Chọn quyền</option>
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">Lưu</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-action="Index" class="btn btn-secondary btn-block">Hủy</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

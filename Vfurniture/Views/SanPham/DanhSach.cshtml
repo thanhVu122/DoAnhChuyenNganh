@@ -1,0 +1,64 @@
+﻿@model List<Vfurniture.Models.SanPhams>
+@{
+    ViewData["Title"] = "Kết quả tìm kiếm";
+}
+
+<div class="container DanhSach">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="headping-page position-relative text-center p-2">
+            <h1>Tìm kiếm</h1>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="features_items">
+        <!--features_items-->
+      
+        @*     1 san pham *@
+        @foreach (var item in Model)
+        {
+            item.Discount ??= 1;
+            int giaValue = item.Gia ?? 1000;
+            int giamoi = (item.Discount.Value * giaValue) / 100;
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+
+                        <div class="productinfo text-center">
+                            <a asp-controller="SanPham" asp-action="Deltail" asp-route-id="@item.MaSanPham">
+                                <span class="discount">@item.Discount%</span>
+                                <img src="~/images/sanpham/@item.HinhAnh" alt="" />
+                                <p class="pt-2">@item.TenSanPham</p>
+                            </a>
+
+                            <div class="row p">
+                                <div class="col-md-6">
+                                    <h2 class="giamoi" style="font-size: 20px">
+                                        @String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.Gia - giamoi)
+                                    </h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <h2>
+                                        <del>
+                                            @String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.Gia)
+                                        </del>
+                                    </h2>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                            <a class="btn btn-default add-to-cart" asp-controller="Giohang" asp-action="Them" asp-route-Id="@item.MaSanPham">
+                                <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        }
+    </div><!--features_items-->
+</div>

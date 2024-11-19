@@ -2796,3 +2796,8 @@ h2.title {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     padding: 10px;
 }
+.DanhSach .headping-page {
+    position: relative;
+    text-align: center;
+    padding: 0 0 30px 0;
+}

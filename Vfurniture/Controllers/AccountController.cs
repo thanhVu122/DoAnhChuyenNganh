@@ -49,7 +49,7 @@ namespace Vfurniture.Controllers
                 {
                     UserName = user.TaiKhoan,
                     Email = user.Email,
-
+                    PhoneNumber=user.SoDienThoai,
                 };
 
                 IdentityResult result = await _userManager.CreateAsync(newUser, user.MatKhau);

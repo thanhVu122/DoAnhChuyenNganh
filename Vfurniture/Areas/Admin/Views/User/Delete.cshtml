@@ -1,0 +1,24 @@
+﻿@model Vfurniture.Models.AppNguoiDung
+
+@{
+    ViewData["Title"] = "Xác nhận xóa người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa người dùng</h2>
+
+<div class="alert alert-warning">
+    <p>Bạn có chắc chắn muốn xóa người dùng này không?</p>
+    <ul>
+        <li><strong>Tên đăng nhập:</strong> @Model.UserName</li>
+        <li><strong>Email:</strong> @Model.Email</li>
+        <li><strong>Số điện thoại:</strong> @Model.PhoneNumber</li>
+    </ul>
+</div>
+
+<form asp-action="DeleteConfirmed" asp-route-Id="@Model.Id" method="post">
+    @* Nút Xác nhận Xóa *@
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    @* Nút Quay lại *@
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

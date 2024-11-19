@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IdentityRole
+
+@{
+    ViewData["title"] = "Thêm quyền";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm quyền</h2>
+
+<div class="container mt-2">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h1 class="h4 text-primary">Thêm quyền</h1>
+                </div>
+
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!-- Mã quyền -->
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                            <input asp-for="Name" required class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">Thêm quyền</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-secondary btn-block" asp-action="Index">Quay lại</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}
