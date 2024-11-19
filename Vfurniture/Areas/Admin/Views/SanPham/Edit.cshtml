@@ -49,10 +49,30 @@
         <!-- Hình ảnh -->
         <div class="form-group">
             <label>Hình ảnh hiện tại:</label><br />
-            <img src="/images/sanpham/@Model.HinhAnh" alt="@Model.TenSanPham" width="100" height="100" /><br /><br />
+            <img src="/images/sanpham/@Model.HinhAnh" alt="@Model.TenSanPham" style="width: 100px; height: auto;" /><br /><br />
             <label asp-for="imagesLoad"></label>
             <input asp-for="imagesLoad" type="file" class="form-control" />
             <span asp-validation-for="imagesLoad" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Danh sách hình ảnh hiện tại:</label><br />
+            @if (!string.IsNullOrEmpty(Model.DanhSachHinhAnh))
+            {
+                var images = Model.DanhSachHinhAnh.Split(",");
+                foreach (var image in images)
+                {
+                    <img src="/images/sanpham/@image" alt="Hình ảnh sản phẩm" style="width: 100px; height: auto; margin: 5px;" />
+                }
+            }
+            else
+            {
+                <p>Chưa có hình ảnh nào.</p>
+            }
+            <br /><br />
+
+            <label>Thêm hình ảnh mới:</label>
+            <input asp-for="imagesLoadList" type="file" multiple class="form-control" />
+            <span asp-validation-for="imagesLoadList" class="text-danger"></span>
         </div>
 
         <!-- Mô tả -->

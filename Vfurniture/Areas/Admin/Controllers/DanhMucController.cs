@@ -7,7 +7,8 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize (Roles ="admin")]
+
     public class DanhMucController : Controller
     {
         private readonly DataContext _dataContext;
@@ -39,7 +40,7 @@ namespace Vfurniture.Areas.Admin.Controllers
             {
                 _dataContext.Add(danhMuc);
                 await _dataContext.SaveChangesAsync();
-                TempData["ThanhCong"] = "Thêm danh mục thành công";
+                TempData["success"] = "Thêm danh mục thành công";
                 return RedirectToAction("Index");
             }
             return View(danhMuc);
@@ -78,7 +79,7 @@ namespace Vfurniture.Areas.Admin.Controllers
                 {
                     _dataContext.Update(danhMuc);
                     await _dataContext.SaveChangesAsync();
-                    TempData["ThanhCong"] = "Cập nhật danh mục thành công";
+                    TempData["success"] = "Cập nhật danh mục thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -125,7 +126,7 @@ namespace Vfurniture.Areas.Admin.Controllers
             {
                 _dataContext.DanhMucs.Remove(danhMuc);
                 await _dataContext.SaveChangesAsync();
-                TempData["ThanhCong"] = "Xóa danh mục thành công";
+                TempData["success"] = "Xóa danh mục thành công";
             }
             return RedirectToAction("Index");
         }

@@ -8,7 +8,7 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class SanPhamController : Controller
     {
 
@@ -17,7 +17,7 @@ namespace Vfurniture.Areas.Admin.Controllers
         public SanPhamController(DataContext dataContext, IWebHostEnvironment webHostEnvironment)
         {
             _dataContext = dataContext;
-            _webHostEnvironment = webHostEnvironment;   
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<IActionResult> Index()
         {
@@ -38,59 +38,80 @@ namespace Vfurniture.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SanPhams sanPhams)
         {
-            ViewBag.dm = new SelectList(_dataContext.DanhMucs, "MaDanhMuc", "TenDanhMuc",sanPhams.MaDanhMuc);
+            ViewBag.dm = new SelectList(_dataContext.DanhMucs, "MaDanhMuc", "TenDanhMuc", sanPhams.MaDanhMuc);
 
             if (ModelState.IsValid)
             {
+                string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "images/sanpham");
 
+                // Xử lý hình ảnh chính
                 if (sanPhams.imagesLoad != null && sanPhams.imagesLoad.Length > 0)
                 {
-                    string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "images/sanpham");
+                    string imageName = Guid.NewGuid().ToString() + "_" + sanPhams.imagesLoad.FileName;
+                    string filePath = Path.Combine(uploadsDir, imageName);
 
-                    string imegaName = Guid.NewGuid().ToString() + "_" + sanPhams.imagesLoad.FileName;
-                    string filePath = Path.Combine(uploadsDir, imegaName);
+                    using (var fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        await sanPhams.imagesLoad.CopyToAsync(fs);
+                    }
 
-                    // Save the file
-                    FileStream fs = new FileStream(filePath, FileMode.Create);
-                    await sanPhams.imagesLoad.CopyToAsync(fs);
-                    fs.Close();
-                    sanPhams.HinhAnh = imegaName; // Save the image name in the database
+                    sanPhams.HinhAnh = imageName; // Lưu tên ảnh chính vào database
                 }
 
+                // Xử lý danh sách hình ảnh
+                if (sanPhams.imagesLoadList != null && sanPhams.imagesLoadList.Count > 0)
+                {
+                    List<string> danhSachHinhAnh = new List<string>();
+
+                    foreach (var file in sanPhams.imagesLoadList)
+                    {
+                        string imageName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                        string filePath = Path.Combine(uploadsDir, imageName);
+
+                        using (var fs = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(fs);
+                        }
+
+                        danhSachHinhAnh.Add(imageName); // Lưu tên các hình ảnh vào danh sách
+                    }
+
+                    sanPhams.DanhSachHinhAnh = string.Join(",", danhSachHinhAnh); // Gộp tên hình ảnh thành chuỗi
+                }
+
+                // Lưu sản phẩm vào database
                 _dataContext.Add(sanPhams);
                 await _dataContext.SaveChangesAsync();
-                TempData["Thanhcong"] = "Thêm sản phẩm thành công";
+                TempData["success"] = "Thêm sản phẩm thành công";
                 return RedirectToAction("Index");
             }
-            else
+
+            // Xử lý lỗi nếu dữ liệu không hợp lệ
+            TempData["ThatBai"] = "Không hợp lệ";
+            foreach (var modelState in ModelState)
             {
-                TempData["ThatBai"] = "Không hợp lệ";
-                List<string> erorrList = new List<string>();
-
-                foreach (var modelState in ModelState)
+                foreach (var error in modelState.Value.Errors)
                 {
-                    foreach (var error in modelState.Value.Errors)
-                    {
-                erorrList.Add(error.ErrorMessage);        
-                    }
+                    ModelState.AddModelError("", error.ErrorMessage);
                 }
-
             }
+
             return View(sanPhams);
         }
 
+
         [HttpGet]
-        public async Task<IActionResult>Delete (int Id)
+        public async Task<IActionResult> Delete(long Id)
         {
-            var move=await _dataContext.SanPhams.FirstOrDefaultAsync(x=>x.MaSanPham==Id);
+            var move = await _dataContext.SanPhams.FirstOrDefaultAsync(x => x.MaSanPham == Id);
             return View(move);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteCf(int Id)
+        public async Task<IActionResult> DeleteCf(long Id)
         {
             var move = await _dataContext.SanPhams.FindAsync(Id);
-            if (move!= null)
+            if (move != null)
             {
                 _dataContext.Remove(move);
             }
@@ -100,7 +121,7 @@ namespace Vfurniture.Areas.Admin.Controllers
 
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(long id)
         {
             var sanPham = await _dataContext.SanPhams.FindAsync(id);
             if (sanPham == null)
@@ -111,7 +132,6 @@ namespace Vfurniture.Areas.Admin.Controllers
             ViewBag.dm = new SelectList(_dataContext.DanhMucs, "MaDanhMuc", "TenDanhMuc", sanPham.MaDanhMuc);
             return View(sanPham);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(SanPhams sanPham)
@@ -128,7 +148,7 @@ namespace Vfurniture.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            // Update fields with new values
+            // Cập nhật thông tin sản phẩm
             sanPhamDb.TenSanPham = sanPham.TenSanPham;
             sanPhamDb.MaDanhMuc = sanPham.MaDanhMuc;
             sanPhamDb.Gia = sanPham.Gia;
@@ -136,14 +156,13 @@ namespace Vfurniture.Areas.Admin.Controllers
             sanPhamDb.KichThuoc = sanPham.KichThuoc;
             sanPhamDb.Mota = sanPham.Mota;
             sanPhamDb.TrangThai = sanPham.TrangThai;
-
-            // Set NgayCapNhat to the current date and time
             sanPhamDb.NgayCapNhat = DateTime.Now;
 
-            // Update image if a new one is uploaded
+            string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "images/sanpham");
+
+            // Xử lý hình ảnh chính
             if (sanPham.imagesLoad != null && sanPham.imagesLoad.Length > 0)
             {
-                string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "images/sanpham");
                 string imageName = Guid.NewGuid().ToString() + "_" + sanPham.imagesLoad.FileName;
                 string filePath = Path.Combine(uploadsDir, imageName);
 
@@ -152,16 +171,35 @@ namespace Vfurniture.Areas.Admin.Controllers
                     await sanPham.imagesLoad.CopyToAsync(fs);
                 }
 
-                sanPhamDb.HinhAnh = imageName; // Update with the new image name
+                sanPhamDb.HinhAnh = imageName; // Cập nhật hình ảnh chính
+            }
+
+            // Xử lý danh sách hình ảnh
+            if (sanPham.imagesLoadList != null && sanPham.imagesLoadList.Count > 0)
+            {
+                List<string> danhSachHinhAnh = new List<string>();
+
+                foreach (var file in sanPham.imagesLoadList)
+                {
+                    string imageName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    string filePath = Path.Combine(uploadsDir, imageName);
+
+                    using (var fs = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fs);
+                    }
+
+                    danhSachHinhAnh.Add(imageName);
+                }
+
+                sanPhamDb.DanhSachHinhAnh = string.Join(",", danhSachHinhAnh); // Cập nhật danh sách hình ảnh
             }
 
             _dataContext.Update(sanPhamDb);
             await _dataContext.SaveChangesAsync();
 
-            TempData["ThanhCong"] = "Cập nhật sản phẩm thành công";
+            TempData["success"] = "Cập nhật sản phẩm thành công";
             return RedirectToAction("Index");
         }
-
     }
-
 }

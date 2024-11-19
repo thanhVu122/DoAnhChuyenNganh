@@ -6,7 +6,7 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class DonHangController : Controller
     {
         private readonly DataContext _dataContext;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/User")]
+    [Authorize(Roles = "admin")]
     public class UserController : Controller
     {
 
@@ -168,7 +169,7 @@ namespace Vfurniture.Areas.Admin.Controllers
                 existingUser.UserName = user.UserName;
                 existingUser.Email = user.Email;
                 existingUser.PhoneNumber = user.PhoneNumber;
-
+                existingUser.RoleId = user.RoleId;
                 // Lưu thay đổi
                 var result = await _userManager.UpdateAsync(existingUser);
 

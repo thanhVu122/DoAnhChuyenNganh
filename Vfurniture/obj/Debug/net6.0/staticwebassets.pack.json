@@ -7369,6 +7369,10 @@
       "PackagePath": "staticwebassets\\images\\404\\404.png"
     },
     {
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\404\\BanGhe1.jpg",
+      "PackagePath": "staticwebassets\\images\\404\\BanGhe1.jpg"
+    },
+    {
       "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\404\\error.jpg",
       "PackagePath": "staticwebassets\\images\\404\\error.jpg"
     },
@@ -7517,32 +7521,28 @@
       "PackagePath": "staticwebassets\\images\\sanpham\\0b49e55b-0a4c-4133-acda-329050ae85dc_giuong5.jpg"
     },
     {
-      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\38f7d12b-2169-407b-8297-4ebb5724a193_Ảnh chụp màn hình 2023-10-22 203143.png",
-      "PackagePath": "staticwebassets\\images\\sanpham\\38f7d12b-2169-407b-8297-4ebb5724a193_Ảnh chụp màn hình 2023-10-22 203143.png"
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\881273a0-e87e-4bfc-adc8-e72eabf3126a_banGhe1.jpg",
+      "PackagePath": "staticwebassets\\images\\sanpham\\881273a0-e87e-4bfc-adc8-e72eabf3126a_banGhe1.jpg"
     },
     {
-      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg",
-      "PackagePath": "staticwebassets\\images\\sanpham\\65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg"
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\8da25824-a091-4082-b87a-c016efcc91e7_ListbanGhe2 (1).jpg",
+      "PackagePath": "staticwebassets\\images\\sanpham\\8da25824-a091-4082-b87a-c016efcc91e7_ListbanGhe2 (1).jpg"
     },
     {
-      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\7c76b74b-a5f5-4b3b-b79d-fbaab37d884d_Ảnh chụp màn hình 2023-10-29 225254.png",
-      "PackagePath": "staticwebassets\\images\\sanpham\\7c76b74b-a5f5-4b3b-b79d-fbaab37d884d_Ảnh chụp màn hình 2023-10-29 225254.png"
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\ListbanGhe2 (1).jpg",
+      "PackagePath": "staticwebassets\\images\\sanpham\\ListbanGhe2 (1).jpg"
     },
     {
-      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\9d0b8fed-0ec5-475b-a20a-6fcbe756bb7f_Ảnh chụp màn hình 2023-10-29 225254.png",
-      "PackagePath": "staticwebassets\\images\\sanpham\\9d0b8fed-0ec5-475b-a20a-6fcbe756bb7f_Ảnh chụp màn hình 2023-10-29 225254.png"
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\ListbanGhe4 (2).jpg",
+      "PackagePath": "staticwebassets\\images\\sanpham\\ListbanGhe4 (2).jpg"
     },
     {
       "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\a8269af8-98a4-4be3-ae7b-6740c0c911c0_giuong2.jpg",
       "PackagePath": "staticwebassets\\images\\sanpham\\a8269af8-98a4-4be3-ae7b-6740c0c911c0_giuong2.jpg"
     },
     {
-      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\b25a02a9-23d3-4b6e-af60-f27c23a70b65_Planet9_Wallpaper_5000x2813.jpg",
-      "PackagePath": "staticwebassets\\images\\sanpham\\b25a02a9-23d3-4b6e-af60-f27c23a70b65_Planet9_Wallpaper_5000x2813.jpg"
-    },
-    {
-      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\ddef6067-65dc-44d1-8ef3-2ad7af4c7742_Ảnh chụp màn hình 2023-11-01 130112.png",
-      "PackagePath": "staticwebassets\\images\\sanpham\\ddef6067-65dc-44d1-8ef3-2ad7af4c7742_Ảnh chụp màn hình 2023-11-01 130112.png"
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\cd62bbcc-f49f-44d3-b3a4-b8b1706e0ad7_ListbanGhe4 (2).jpg",
+      "PackagePath": "staticwebassets\\images\\sanpham\\cd62bbcc-f49f-44d3-b3a4-b8b1706e0ad7_ListbanGhe4 (2).jpg"
     },
     {
       "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\f70001a9-57c6-4d6b-ac8a-a8d0af4e38b5_giuong.jpg",
@@ -7567,6 +7567,10 @@
     {
       "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\shop\\ic_close.webp",
       "PackagePath": "staticwebassets\\images\\shop\\ic_close.webp"
+    },
+    {
+      "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\js\\JqueryProduct.js",
+      "PackagePath": "staticwebassets\\js\\JqueryProduct.js"
     },
     {
       "Id": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\js\\bootstrap.min.js",

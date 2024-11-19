@@ -25,8 +25,8 @@ namespace Vfurniture.Models
         [Required(ErrorMessage = "Giá không được để trống")]
         [Range(1000, int.MaxValue, ErrorMessage = "Giá phải lớn hơn hoặc bằng 1000")]
         [DisplayName("Giá")]
-        [DisplayFormat(DataFormatString = "{0:#,0₫}", ApplyFormatInEditMode = true)]
-        public int? Gia { get; set; }
+  
+        public decimal Gia { get; set; }
 
         [Range(0, 100, ErrorMessage = "Phần trăm giảm giá phải trong khoảng 0 đến 100")]
         [DisplayName("Phần trăm giảm giá")]
@@ -71,5 +71,14 @@ namespace Vfurniture.Models
         [NotMapped]
         [FileExtension]
         public IFormFile imagesLoad { get; set; }
+        [NotMapped]
+        public List<IFormFile> imagesLoadList { get; set; }
+        public decimal GiaKhuyenMai
+        {
+            get
+            {
+                return Gia - (Gia * (Discount ?? 0) / 100); // Nếu Discount là null, mặc định 0%
+            }
+        }
     }
 }

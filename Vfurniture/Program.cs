@@ -31,6 +31,7 @@ builder.Services.AddSession(options =>
 	options.Cookie.IsEssential = true;
 }
 );
+//khai bao identity
 builder.Services.AddIdentity<AppNguoiDung,IdentityRole>()
     .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
@@ -69,7 +70,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllerRoute(

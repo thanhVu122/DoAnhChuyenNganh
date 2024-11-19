@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <a asp-area="Admin" asp-controller="SanPham" asp-action="Create">Thêm sản phẩm</a>
-          
+
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div id="dataTable_filter" class="dataTables_filter">
@@ -39,6 +39,7 @@
                                         <th>Mã sản phẩm</th>
                                         <th>Tên sản phẩm</th>
                                         <th>Hình ảnh</th>
+                                        <th>Danh sách hình ảnh</th>
                                         <th>Giá</th>
                                         <th>Phần trăm giảm giá</th>
                                         <th>Kích thước</th>
@@ -52,26 +53,43 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>@item.MaSanPham</td>
-                                            <td>@item.TenSanPham</td>
-                                            <td><img src="/images/sanpham/@item.HinhAnh" alt="@item.TenSanPham" width="100" height="100"></td> 
-                                            <td>@item.Gia</td>
-                                            <td>@item.Discount%</td>
-                                            <td>@item.KichThuoc</td>
-                                            <td>@item.NgayTao.Date</td>
-                                            <td>@item.NgayCapNhat.Date</td>
-                                            <td>@(item.TrangThai == true ? "Hiển thị" : "Không hiển thị")</td>
-                                            <td><a class="btn btn-success mb-1" asp-controller="SanPham" asp-action="Edit"asp-route-id="@item.MaSanPham">Sửa</a>
-                                                <a  class="btn btn-danger" asp-controller="SanPham" asp-action="Delete" asp-route-Id="@item.MaSanPham">Xóa</a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>@item.MaSanPham</td>
+                                                <td>@item.TenSanPham</td>
+                                                <td><img src="/images/sanpham/@item.HinhAnh" alt="@item.TenSanPham" width="100" height="100"></td>
+                                               <td>
+                                                @if (!string.IsNullOrEmpty(item.DanhSachHinhAnh))
+                                                {
+                                                    var imageList = item.DanhSachHinhAnh.Split(',');
+
+                                                    foreach (var image in imageList)
+                                                    {
+                                                                <img src="/images/sanpham/@item.DanhSachHinhAnh"  style="width: 100px; height: auto;">
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                        <p>Trong</p>
+                                                }
+                                                </td>
+
+                                                <td>@item.Gia</td>
+                                                <td>@item.Discount%</td>
+                                                <td>@item.KichThuoc</td>
+                                                <td>@item.NgayTao.Date</td>
+                                                <td>@item.NgayCapNhat.Date</td>
+                                                <td>@(item.TrangThai == true ? "Hiển thị" : "Không hiển thị")</td>
+                                                <td><a class="btn btn-success mb-1" asp-controller="SanPham" asp-action="Edit"asp-route-id="@item.MaSanPham">Sửa</a>
+                                                    <a  class="btn btn-danger" asp-controller="SanPham" asp-action="Delete" asp-route-Id="@item.MaSanPham">Xóa</a>
+                                                </td>
+                                            </tr>
                                     }
                                 </tbody>
                             </table>
                         </div>
                     </div>
-           
+
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ namespace Vfurniture.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         [Area("Admin")]
-        [Authorize]
+        [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
             return View();

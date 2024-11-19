@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XlCb8yL8oMG+qWz1VnpdE/IPhkXjq8voYnVWyO9Biqg=",
+  "Hash": "swKWTXWA/24SWyay0S9EKxz4kYGgHWTo7Or452mqgLQ=",
   "Source": "Vfurniture",
   "BasePath": "_content/Vfurniture",
   "Mode": "Default",
@@ -31348,6 +31348,23 @@
       "OriginalItemSpec": "wwwroot\\images\\404\\404.png"
     },
     {
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\404\\BanGhe1.jpg",
+      "SourceId": "Vfurniture",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
+      "BasePath": "_content/Vfurniture",
+      "RelativePath": "images/404/BanGhe1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\404\\BanGhe1.jpg"
+    },
+    {
       "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\404\\error.jpg",
       "SourceId": "Vfurniture",
       "SourceType": "Discovered",
@@ -31977,12 +31994,12 @@
       "OriginalItemSpec": "wwwroot\\images\\sanpham\\0b49e55b-0a4c-4133-acda-329050ae85dc_giuong5.jpg"
     },
     {
-      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\38f7d12b-2169-407b-8297-4ebb5724a193_Ảnh chụp màn hình 2023-10-22 203143.png",
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\881273a0-e87e-4bfc-adc8-e72eabf3126a_banGhe1.jpg",
       "SourceId": "Vfurniture",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
       "BasePath": "_content/Vfurniture",
-      "RelativePath": "images/sanpham/38f7d12b-2169-407b-8297-4ebb5724a193_Ảnh chụp màn hình 2023-10-22 203143.png",
+      "RelativePath": "images/sanpham/881273a0-e87e-4bfc-adc8-e72eabf3126a_banGhe1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31991,15 +32008,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\sanpham\\38f7d12b-2169-407b-8297-4ebb5724a193_Ảnh chụp màn hình 2023-10-22 203143.png"
+      "OriginalItemSpec": "wwwroot\\images\\sanpham\\881273a0-e87e-4bfc-adc8-e72eabf3126a_banGhe1.jpg"
     },
     {
-      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg",
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\8da25824-a091-4082-b87a-c016efcc91e7_ListbanGhe2 (1).jpg",
       "SourceId": "Vfurniture",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
       "BasePath": "_content/Vfurniture",
-      "RelativePath": "images/sanpham/65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg",
+      "RelativePath": "images/sanpham/8da25824-a091-4082-b87a-c016efcc91e7_ListbanGhe2 (1).jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -32008,41 +32025,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\sanpham\\65983205-582d-4581-908f-91357a54ae61_Planet9_Wallpaper_5000x2813.jpg"
-    },
-    {
-      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\7c76b74b-a5f5-4b3b-b79d-fbaab37d884d_Ảnh chụp màn hình 2023-10-29 225254.png",
-      "SourceId": "Vfurniture",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
-      "BasePath": "_content/Vfurniture",
-      "RelativePath": "images/sanpham/7c76b74b-a5f5-4b3b-b79d-fbaab37d884d_Ảnh chụp màn hình 2023-10-29 225254.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\sanpham\\7c76b74b-a5f5-4b3b-b79d-fbaab37d884d_Ảnh chụp màn hình 2023-10-29 225254.png"
-    },
-    {
-      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\9d0b8fed-0ec5-475b-a20a-6fcbe756bb7f_Ảnh chụp màn hình 2023-10-29 225254.png",
-      "SourceId": "Vfurniture",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
-      "BasePath": "_content/Vfurniture",
-      "RelativePath": "images/sanpham/9d0b8fed-0ec5-475b-a20a-6fcbe756bb7f_Ảnh chụp màn hình 2023-10-29 225254.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\sanpham\\9d0b8fed-0ec5-475b-a20a-6fcbe756bb7f_Ảnh chụp màn hình 2023-10-29 225254.png"
+      "OriginalItemSpec": "wwwroot\\images\\sanpham\\8da25824-a091-4082-b87a-c016efcc91e7_ListbanGhe2 (1).jpg"
     },
     {
       "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\a8269af8-98a4-4be3-ae7b-6740c0c911c0_giuong2.jpg",
@@ -32062,12 +32045,12 @@
       "OriginalItemSpec": "wwwroot\\images\\sanpham\\a8269af8-98a4-4be3-ae7b-6740c0c911c0_giuong2.jpg"
     },
     {
-      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\b25a02a9-23d3-4b6e-af60-f27c23a70b65_Planet9_Wallpaper_5000x2813.jpg",
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\cd62bbcc-f49f-44d3-b3a4-b8b1706e0ad7_ListbanGhe4 (2).jpg",
       "SourceId": "Vfurniture",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
       "BasePath": "_content/Vfurniture",
-      "RelativePath": "images/sanpham/b25a02a9-23d3-4b6e-af60-f27c23a70b65_Planet9_Wallpaper_5000x2813.jpg",
+      "RelativePath": "images/sanpham/cd62bbcc-f49f-44d3-b3a4-b8b1706e0ad7_ListbanGhe4 (2).jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -32076,24 +32059,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\sanpham\\b25a02a9-23d3-4b6e-af60-f27c23a70b65_Planet9_Wallpaper_5000x2813.jpg"
-    },
-    {
-      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\ddef6067-65dc-44d1-8ef3-2ad7af4c7742_Ảnh chụp màn hình 2023-11-01 130112.png",
-      "SourceId": "Vfurniture",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
-      "BasePath": "_content/Vfurniture",
-      "RelativePath": "images/sanpham/ddef6067-65dc-44d1-8ef3-2ad7af4c7742_Ảnh chụp màn hình 2023-11-01 130112.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\sanpham\\ddef6067-65dc-44d1-8ef3-2ad7af4c7742_Ảnh chụp màn hình 2023-11-01 130112.png"
+      "OriginalItemSpec": "wwwroot\\images\\sanpham\\cd62bbcc-f49f-44d3-b3a4-b8b1706e0ad7_ListbanGhe4 (2).jpg"
     },
     {
       "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\f70001a9-57c6-4d6b-ac8a-a8d0af4e38b5_giuong.jpg",
@@ -32128,6 +32094,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\sanpham\\ghe1.jpg"
+    },
+    {
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\ListbanGhe2 (1).jpg",
+      "SourceId": "Vfurniture",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
+      "BasePath": "_content/Vfurniture",
+      "RelativePath": "images/sanpham/ListbanGhe2 (1).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\sanpham\\ListbanGhe2 (1).jpg"
+    },
+    {
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\ListbanGhe4 (2).jpg",
+      "SourceId": "Vfurniture",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
+      "BasePath": "_content/Vfurniture",
+      "RelativePath": "images/sanpham/ListbanGhe4 (2).jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\sanpham\\ListbanGhe4 (2).jpg"
     },
     {
       "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\images\\sanpham\\pro_nau_noi_that_moho_giuong_ngu_go_tram_vline_1m8_a_6ba57dbc2c7943509208badc020decf8_master.webp",
@@ -32315,6 +32315,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\jquery.scrollUp.min.js"
+    },
+    {
+      "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\js\\JqueryProduct.js",
+      "SourceId": "Vfurniture",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\",
+      "BasePath": "_content/Vfurniture",
+      "RelativePath": "js/JqueryProduct.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\JqueryProduct.js"
     },
     {
       "Identity": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\wwwroot\\js\\main.js",

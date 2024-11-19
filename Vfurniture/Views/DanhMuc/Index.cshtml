@@ -19,13 +19,7 @@
         @*     1 san pham *@
         @foreach (var item in Model)
         {
-            item.Discount ??= 1;
-
-          
-            int giaValue = item.Gia ?? 1000; 
-
-         
-            int giamoi = (item.Discount.Value * giaValue) / 100;
+      
             <div class="col-sm-4">
                 <div class="product-image-wrapper">
                     <div class="single-products">
@@ -37,7 +31,7 @@
                                 <p class="pt-2">@item.TenSanPham</p>
 
                                 <div class="row p">
-                                    <div class="col-md-6"><h2>@giamoi</h2></div>
+                                    <div class="col-md-6"><h2>Gia Moi Chua co</h2></div>
                                     <div class="col-md-6"><h2><del>@item.Gia</del></h2></div>
                                 </div>
 

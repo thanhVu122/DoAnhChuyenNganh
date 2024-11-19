@@ -20,30 +20,30 @@
         @*     1 san pham *@
         @foreach(var item in Model)
         {
-            item.Discount ??= 1;
-            int giaValue = item.Gia ?? 1000; 
-            int giamoi = (item.Discount.Value * giaValue) / 100;
+         
             <div class="col-sm-4">
                 <div class="product-image-wrapper">
                     <div class="single-products">
                        
-                            <div class="productinfo text-center">
+                            <div class="productinfo ">
                                 <a asp-controller="SanPham" asp-action="Deltail" asp-route-id="@item.MaSanPham">
                                     <span class="discount">@item.Discount%</span>
-                                    <img src="~/images/sanpham/@item.HinhAnh" alt="" />
+                                    <img src="~/images/sanpham/@item.HinhAnh" alt="" width="300" height="300" />
+                                    <div class="name">
                                     <p class="pt-2">@item.TenSanPham</p>
+                                    </div>
                                 </a>
 
                                 <div class="row p">
                                 <div class="col-md-6">
                                     <h2  class="giamoi" style="font-size: 20px">
-                                        @String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.Gia-giamoi)
+                                        @item.GiaKhuyenMai.ToString("N0")đ
                                     </h2>
                                 </div>
                                 <div class="col-md-6">
                                     <h2>
                                         <del>
-                                            @String.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.Gia)
+                                            @item.Gia.ToString("N0")đ
                                         </del>
                                     </h2>
                                 </div>

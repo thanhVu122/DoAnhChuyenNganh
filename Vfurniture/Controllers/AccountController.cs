@@ -55,6 +55,7 @@ namespace Vfurniture.Controllers
                 IdentityResult result = await _userManager.CreateAsync(newUser, user.MatKhau);
                 if (result.Succeeded)
                 {
+                    var roleResult = await _userManager.AddToRoleAsync(newUser, "User");
                     TempData["success"] = "Tạo tài khoản thành công";
                     return Redirect("/account/Login");
                 }

@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<DatHangChiTiet>
+
 @{
     ViewData["title"] = "Chi tiết đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    decimal TongTien = 0;
+    decimal TongTienCuaSanPham = 0;
+
 }
 
 <div class="container-fluid">
@@ -50,18 +54,23 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        TongTienCuaSanPham = item.SoLuong * item.SanPhams.GiaKhuyenMai;
+                                        TongTien += TongTienCuaSanPham;
                                         <tr>
                                             <td>@item.Id</td>
                                             <td>@item.TenNguoiDat</td>
                                             <td>@item.SanPhams.TenSanPham</td>
                                             <td>@item.SoLuong</td>
-                                            <td>@item.Gia</td>
-                                            <td>@(item.SoLuong * item.Gia)</td>
+                                            <td>@item.SanPhams.GiaKhuyenMai</td>
+                                            <td>@TongTienCuaSanPham</td>
 
                                         </tr>
                                     }
+                                    <th colspan="7"><h1>Tong Tien: </h1> @TongTien</></th>
                                 </tbody>
+
                             </table>
+                            <div></div>
                         </div>
                     </div>
 

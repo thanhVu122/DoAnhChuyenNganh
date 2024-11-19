@@ -7,7 +7,7 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/Role")]
+    [Authorize(Roles = "admin")]
     //[Authorize(Roles ="Admin")]
     public class RoleController : Controller
     {

@@ -46,9 +46,9 @@
                                                                 <h3>@item.SanphamName</h3>
                                                             </a>
                                                             <p>
-                                                                <span>@item.GiaMoi</span>
+                                                                <span class="text-danger">@item.GiaKhuyenMai.ToString("N0")đ</span>
 
-                                                                <del>@item.Gia</del>
+                                                                <del>@item.Gia.ToString("N0")đ</del>
 
                                                             </p>
                                                             <p class="variant">
@@ -63,7 +63,7 @@
                                                             </div>
                                                             <p class="price float-end">
                                                                 <span class="text">Thành tiền: </span>
-                                                                <span class="line-item-total">@item.GiaMoi</span>
+                                                                <span class="line-item-total">@item.tongTien.ToString("N0")đ</span>
                                                             </p>
                                                         </td>
                                                         <td class="remove position-absolute end-0 me-3">
@@ -106,7 +106,7 @@
                             <h2>Thông tin đơn hàng</h2>
                         </div>
                         <div class="order_total_price">
-                            <p>Tổng tiền: <span>@Model.GioHangsTotal</span></p>
+                            <p>Tổng tiền: <span>@Model.GioHangsTotal.ToString("N0")đ</span></p>
                         </div>
                         <div class="order_cart_action">
                             <div class="cart-buttons">
