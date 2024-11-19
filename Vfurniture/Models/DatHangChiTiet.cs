@@ -1,4 +1,6 @@
-﻿namespace Vfurniture.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Vfurniture.Models
 {
     public class DatHangChiTiet
     {
@@ -8,7 +10,8 @@
         public long MaSanPham { get; set; }
         public decimal? Gia { get; set; }
         public int SoLuong { get; set; }
-
+        [ForeignKey("MaSanPham")]
+        public SanPhams SanPhams { get; set; }
 
     }
 }

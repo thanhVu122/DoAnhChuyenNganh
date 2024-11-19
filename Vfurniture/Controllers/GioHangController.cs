@@ -25,7 +25,7 @@ namespace Vfurniture.Controllers
             return View(cartVM);
         }
 
-        public async Task<IActionResult> Them(int Id)
+        public async Task<IActionResult> Them(long  Id)
         {
             SanPhams sanPhams = await _dataContext.SanPhams.FindAsync(Id);
 
@@ -46,7 +46,7 @@ namespace Vfurniture.Controllers
             return Redirect(Request.Headers["Referer"].ToString());
 
         }
-        public async Task<IActionResult> congSanpham(int Id)
+        public async Task<IActionResult> congSanpham(long Id)
         {
             List<GioHangsModel> gioHangs = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang");
             GioHangsModel gioHangsModel = gioHangs.Where(g => g.SanphamId == Id).FirstOrDefault();
@@ -66,7 +66,7 @@ namespace Vfurniture.Controllers
             
             return RedirectToAction("Index");   
         }
-        public async Task<IActionResult> truSanpham(int Id)
+        public async Task<IActionResult> truSanpham(long Id)
         {
             List<GioHangsModel> gioHangs = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang");
             GioHangsModel gioHangsModel = gioHangs.Where(g => g.SanphamId == Id).FirstOrDefault();
@@ -87,7 +87,7 @@ namespace Vfurniture.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> remove(int Id)
+        public async Task<IActionResult> remove(long Id)
         {
             List<GioHangsModel> gioHangs = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang");
             gioHangs.RemoveAll(g => g.SanphamId == Id);

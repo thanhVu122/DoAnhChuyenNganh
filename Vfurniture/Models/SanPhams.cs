@@ -11,7 +11,7 @@ namespace Vfurniture.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Mã sản phẩm")]
-        public int MaSanPham { get; set; }
+        public long MaSanPham { get; set; }
 
         [Required(ErrorMessage = "Tên sản phẩm không được để trống")]
         [StringLength(300, ErrorMessage = "Tên sản phẩm không được vượt quá 300 ký tự")]

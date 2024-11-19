@@ -14,7 +14,7 @@ namespace Vfurniture.Reponsitory
         public DbSet<SanPhams> SanPhams { get; set; }
         public DbSet<DatHang> DatHangs{ get; set; }
         public DbSet<DatHangChiTiet> DatHangChiTiets { get; set; }
-
+   
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
