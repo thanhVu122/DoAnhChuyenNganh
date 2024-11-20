@@ -10,8 +10,6 @@ namespace Vfurniture.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaNguoiDung { get; set; } // Mã người dùng, khóa chính
 
-
-
         [DisplayName("Họ và tên")]
         public string TenNguoiDung { get; set; } // Tên người dùng
 

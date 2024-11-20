@@ -54,14 +54,25 @@
                                             <td>@item.TenNguoiDat</td>
                                             <td>@item.MaDatHang</td>
                                             <td>@item.NgayTao</td>
-                                            <td>@(item.TrangThai == 1 ? "Hiển thị" : "Không hiển thị")</td>
+                                    
+                                            <td>
+                                                @if (item.TrangThai == 1)
+                                                {
+                                                    <span class="text-danger">Đơn hàng mới</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-success">Đã xử lý</span>
+                                                }
+                                            </td>
                                             <td>
                                                 <a class="btn btn-success mb-1" asp-controller="DonHang" asp-action="XemChiTiet" asp-route-MaDonHang="@item.MaDatHang">Xem chi tiết</a>
-                                              @*   <a class="btn btn-danger" asp-controller="DonHang" asp-action="Delete" asp-route-Id="@item.Id">Xóa</a> *@
+                                                @*   <a class="btn btn-danger" asp-controller="DonHang" asp-action="Delete" asp-route-Id="@item.Id">Xóa</a> *@
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
+
                             </table>
                         </div>
                     </div>

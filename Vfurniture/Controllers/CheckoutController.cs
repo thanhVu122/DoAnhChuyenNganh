@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Vfurniture.Areas.Admin.Reponsitory;
 using Vfurniture.Models;
 using Vfurniture.Reponsitory;
 
@@ -8,8 +9,10 @@ namespace Vfurniture.Controllers
     public class CheckoutController : Controller
     {
         private readonly DataContext _dataContext;
-        public CheckoutController(DataContext dataContext)
+        private readonly IEmailSender _emailSender;
+        public CheckoutController(DataContext dataContext,IEmailSender emailSender)
         {
+            _emailSender = emailSender;
             _dataContext = dataContext;
         }
         public async Task<IActionResult> Checkout()
@@ -42,8 +45,13 @@ namespace Vfurniture.Controllers
                     _dataContext.Add(ChiTietDatHang);
                     _dataContext.SaveChanges();
 
-                }
+                } 
                 HttpContext.Session.Remove("GioHang");
+                //Send mail 
+                var receiver = userEmail;
+                var subject = "Đặt hàng thành công";
+                var message = "Chúng tôi cảm ơn bạn đã mua sắm trên VFurniture. Đơn hàng của bạn đang được xử lý.";
+                await _emailSender.SendEmailAsync(receiver, subject, message);  
                 TempData["success"] = "Đơn hàng đã được tạo.Chờ xử lý";
                 return RedirectToAction("Index","GioHang");
             }

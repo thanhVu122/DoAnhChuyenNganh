@@ -901,6 +901,7 @@ h2.title {
 .productinfo {
     position: relative;
 }
+
 .single-products .productinfo .name p {
     line-height: 1.5;
     overflow: hidden;
@@ -1062,6 +1063,7 @@ h2.title {
 
 .recommended_items {
     overflow: hidden;
+    padding-top: 20px;
 }
 
 #recommended-item-carousel .carousel-inner .item {

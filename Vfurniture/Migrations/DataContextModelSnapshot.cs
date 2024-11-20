@@ -197,6 +197,9 @@ namespace Vfurniture.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -218,6 +221,39 @@ namespace Vfurniture.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Vfurniture.Models.DanhGia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("MaSanPham")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("MoTa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SoSao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenNguoiDanhGia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaSanPham");
+
+                    b.ToTable("DanhGias");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.DanhMucs", b =>
@@ -273,7 +309,7 @@ namespace Vfurniture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<decimal?>("Gia")
+                    b.Property<decimal>("Gia")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("MaDatHang")
@@ -290,16 +326,18 @@ namespace Vfurniture.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MaSanPham");
+
                     b.ToTable("DatHangChiTiets");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.SanPhams", b =>
                 {
-                    b.Property<int>("MaSanPham")
+                    b.Property<long>("MaSanPham")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaSanPham"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("MaSanPham"), 1L, 1);
 
                     b.Property<string>("DanhSachHinhAnh")
                         .HasColumnType("varchar(MAX)");
@@ -307,9 +345,8 @@ namespace Vfurniture.Migrations
                     b.Property<int?>("Discount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Gia")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<decimal>("Gia")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("HinhAnh")
                         .HasColumnType("varchar(MAX)");
@@ -401,6 +438,28 @@ namespace Vfurniture.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Vfurniture.Models.DanhGia", b =>
+                {
+                    b.HasOne("Vfurniture.Models.SanPhams", "SanPham")
+                        .WithMany()
+                        .HasForeignKey("MaSanPham")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SanPham");
+                });
+
+            modelBuilder.Entity("Vfurniture.Models.DatHangChiTiet", b =>
+                {
+                    b.HasOne("Vfurniture.Models.SanPhams", "SanPhams")
+                        .WithMany()
+                        .HasForeignKey("MaSanPham")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SanPhams");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.SanPhams", b =>

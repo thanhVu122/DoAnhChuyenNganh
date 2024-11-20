@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
+using Vfurniture.Areas.Admin.Reponsitory;
 using Vfurniture.Models;
 using Vfurniture.Reponsitory;
 
@@ -20,6 +21,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
 	options.UseSqlServer(builder.Configuration["ConnectionStrings:myconn"]);
 });
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //add session

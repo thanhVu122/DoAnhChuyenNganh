@@ -80,5 +80,6 @@ namespace Vfurniture.Models
                 return Gia - (Gia * (Discount ?? 0) / 100); // Nếu Discount là null, mặc định 0%
             }
         }
+        public List<DanhGia> DanhGiaList { get; set; }
     }
 }

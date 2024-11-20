@@ -18,25 +18,25 @@
         <h2 class="title text-center">Sản phẩm nổi bật</h2>
 
         @*     1 san pham *@
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
-         
+
             <div class="col-sm-4">
                 <div class="product-image-wrapper">
                     <div class="single-products">
-                       
-                            <div class="productinfo ">
-                                <a asp-controller="SanPham" asp-action="Deltail" asp-route-id="@item.MaSanPham">
-                                    <span class="discount">@item.Discount%</span>
-                                    <img src="~/images/sanpham/@item.HinhAnh" alt="" width="300" height="300" />
-                                    <div class="name">
-                                    <p class="pt-2">@item.TenSanPham</p>
-                                    </div>
-                                </a>
 
-                                <div class="row p">
+                        <div class="productinfo ">
+                            <a asp-controller="SanPham" asp-action="Deltail" asp-route-id="@item.MaSanPham">
+                                <span class="discount">@item.Discount%</span>
+                                <img src="~/images/sanpham/@item.HinhAnh" alt="" width="300" height="300" />
+                                <div class="name">
+                                    <p class="pt-2">@item.TenSanPham</p>
+                                </div>
+                            </a>
+
+                            <div class="row p">
                                 <div class="col-md-6">
-                                    <h2  class="giamoi" style="font-size: 20px">
+                                    <h2 class="giamoi" style="font-size: 20px">
                                         @item.GiaKhuyenMai.ToString("N0")đ
                                     </h2>
                                 </div>
@@ -47,14 +47,17 @@
                                         </del>
                                     </h2>
                                 </div>
-                                </div>
-
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
-                            <a class="btn btn-default add-to-cart" asp-controller="Giohang" asp-action="Them" asp-route-Id="@item.MaSanPham">
-                                    <i class="fa fa-shopping-cart"></i>Giỏ hàng
-                                </a>
                             </div>
-                      
+
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                           @*  <a class="btn btn-default add-to-cart" asp-controller="Giohang" asp-action="Them" asp-route-Id="@item.MaSanPham">
+                                <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                            </a> *@
+                            <button class="btn btn-default add-to-cart"  data-product_id="@item.MaSanPham">
+                                <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                            </button> 
+                        </div>
+
                     </div>
 
                 </div>
@@ -63,5 +66,31 @@
         }
     </div><!--features_items-->
     <!--/category-tab-->
-    
+
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').click(function () {
+                var Id = $(this).data("product_id"); 
+
+
+         
+                $.ajax({
+                    type: "POST", // Sửa từ "typeof" thành "type"
+                    url: "@Url.Action("Them", "GioHang")", // Sửa "URL" thành "url"
+                    data: { Id:Id },
+                    success: function (result) {
+                        if (result) {
+                            Swal.fire("Thêm giỏ hàng thành công");
+
+                        }
+                    },
+                  
+                    
+                });
+            });
+        });
+    </script>
+}

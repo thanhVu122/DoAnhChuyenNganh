@@ -44,6 +44,29 @@ namespace Vfurniture.Areas.Admin.Controllers
 
             return View(chiTietDonHang); // Trả về danh sách chi tiết đơn hàng
         }
+        [HttpPost]
+        [Route("CapNhatDonHang")]
+        public async Task<IActionResult> CapNhatDonHang(string orderCode, int status)
+        {
+
+            var order = await _dataContext.DatHangs.FirstOrDefaultAsync(o => o.MaDatHang == orderCode);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            order.TrangThai = status;
+            try
+            {
+                await _dataContext.SaveChangesAsync();
+                return Ok(new { success = true, message = "Đơn hàng đã được cập nhật" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Đã có lỗi");
+            }
+        }
+
+
 
     }
 }

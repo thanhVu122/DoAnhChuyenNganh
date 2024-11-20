@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SanPhams
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -203,26 +204,49 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade " id="reviews">
+                <div class="tab-pane fade" id="reviews">
                     <div class="col-sm-12">
-                        <ul>
-                            <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                            <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                            <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <p><b>Write Your Review</b></p>
+                        <h4>Đánh giá sản phẩm</h4>
 
-                        <form action="#">
+                        <!-- Danh sách đánh giá -->
+                        @if (Model.DanhGiaList != null && Model.DanhGiaList.Any())
+                        {
+                            foreach (var review in Model.DanhGiaList)
+                            {
+                                <div class="review-item">
+                                    <ul>
+                                        <li><i class="fa fa-user"></i> @review.TenNguoiDanhGia</li>
+                                        <li><i class="fa fa-envelope"></i> @review.Email</li>
+                                        <li><i class="fa fa-star"></i> @review.SoSao Sao</li>
+                                    </ul>
+                                    <p>@review.MoTa</p>
+                                </div>
+                                <hr />
+                            }
+                        }
+                        else
+                        {
+                            <p>Chưa có đánh giá nào.</p>
+                        }
+
+                        <!-- Form thêm đánh giá -->
+                        <p><b>Viết đánh giá của bạn</b></p>
+                        <form asp-action="ThemDanhGia" asp-controller="SanPham" method="post">
+                            <input type="hidden" name="MaSanPham" value="@Model.MaSanPham" />
                             <span>
-                                <input type="text" placeholder="Your Name" />
-                                <input type="email" placeholder="Email Address" />
+                                <input type="text" name="TenNguoiDanhGia" placeholder="Tên của bạn" required />
+                                <input type="email" name="Email" placeholder="Địa chỉ Email" required />
                             </span>
-                            <textarea name=""></textarea>
-                            <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-                            <button type="button" class="btn btn-default pull-right">
-                                Submit
-                            </button>
+                            <textarea name="MoTa" placeholder="Nhận xét của bạn" required></textarea>
+                            <b>Đánh giá sao:</b>
+                            <select name="SoSao" required>
+                                <option value="5">5 Sao</option>
+                                <option value="4">4 Sao</option>
+                                <option value="3">3 Sao</option>
+                                <option value="2">2 Sao</option>
+                                <option value="1">1 Sao</option>
+                            </select>
+                            <button type="submit" class="btn btn-default pull-right">Gửi đánh giá</button>
                         </form>
                     </div>
                 </div>
@@ -230,95 +254,106 @@
             </div>
         </div><!--/category-tab-->
 
-        <div class="recommended_items">
+        <div class="recommended_items" style="padding-top: 20px;">
             <!--recommended_items-->
-            <h2 class="title text-center">recommended items</h2>
+            <h2 class="title text-center">Sản phẩm tương tự</h2>
 
             <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="images/home/recommend1.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                        @foreach (var LienQuan in @ViewBag.SPLQ as IEnumerable<SanPhams>)
+                        {
+
+
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+
+                                        <div class="productinfo ">
+                                            <a asp-controller="SanPham" asp-action="Deltail" asp-route-id="@LienQuan.MaSanPham">
+                                                <span class="discount">@LienQuan.Discount%</span>
+                                                <img src="~/images/sanpham/@LienQuan.HinhAnh" alt="" width="300" height="300" />
+                                                <div class="name">
+                                                    <p class="pt-2">@LienQuan.TenSanPham</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="row p">
+                                                <div class="col-md-6">
+                                                    <h2 class="giamoi" style="font-size: 20px">
+                                                        @LienQuan.GiaKhuyenMai.ToString("N0")đ
+                                                    </h2>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h2>
+                                                        <del>
+                                                            @LienQuan.Gia.ToString("N0")đ
+                                                        </del>
+                                                    </h2>
+                                                </div>
+                                            </div>
+
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                            @*  <a class="btn btn-default add-to-cart" asp-controller="Giohang" asp-action="Them" asp-route-Id="@item.MaSanPham">
+                                        <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                                        </a> *@
+                                            <button class="btn btn-default add-to-cart" data-product_id="@LienQuan.MaSanPham">
+                                                <i class="fa fa-shopping-cart"></i>Giỏ hàng
+                                            </button>
+                                        </div>
+
                                     </div>
+
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="images/home/recommend2.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="images/home/recommend3.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }
+
                     </div>
-                    <div class="item">
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="images/home/recommend1.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="images/home/recommend2.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="product-image-wrapper">
-                                <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="images/home/recommend3.jpg" alt="" />
-                                        <h2>$56</h2>
-                                        <p>Easy Polo Black Edition</p>
-                                        <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    @*    <div class="item">
+                    <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                    <div class="single-products">
+                    <div class="productinfo text-center">
+                    <img src="images/home/recommend1.jpg" alt="" />
+                    <h2>$56</h2>
+                    <p>Easy Polo Black Edition</p>
+                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                     </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                    <div class="single-products">
+                    <div class="productinfo text-center">
+                    <img src="images/home/recommend2.jpg" alt="" />
+                    <h2>$56</h2>
+                    <p>Easy Polo Black Edition</p>
+                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                    <div class="single-products">
+                    <div class="productinfo text-center">
+                    <img src="images/home/recommend3.jpg" alt="" />
+                    <h2>$56</h2>
+                    <p>Easy Polo Black Edition</p>
+                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div> *@
                 </div>
-                <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
+                @* <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
                 </a>
                 <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a>
+                <i class="fa fa-angle-right"></i>
+                </a> *@
             </div>
         </div><!--/recommended_items-->
 
