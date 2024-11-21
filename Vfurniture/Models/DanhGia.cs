@@ -19,7 +19,9 @@ namespace Vfurniture.Models
         [Required(ErrorMessage = "Vui lòng nhập Email")]
         public string Email { get; set; }
         public int SoSao { get; set; }
+        public int TrangThai { get; set; }
         [ForeignKey("MaSanPham")]
         public SanPhams SanPham { get; set; }
+
     }
 }

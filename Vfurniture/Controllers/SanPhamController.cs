@@ -25,23 +25,23 @@ namespace Vfurniture.Controllers
                 return RedirectToAction("Index");
             }
             //Lay cac san pham
-            var SanPhamtuMaSp = _dataContext.SanPhams
-      
-                .Where(s => s.MaSanPham == id)
-                .FirstOrDefault();
-            // Lấy danh sách đánh giá liên quan đến sản phẩm
-            var danhGiaList = await _dataContext.DanhGias
-                .Where(dg => dg.MaSanPham == id)
-                .ToListAsync();
-            // Gán danh sách đánh giá vào thuộc tính của sản phẩm
-            SanPhamtuMaSp.DanhGiaList = danhGiaList;
-            //Các sản phẩm liên qua 
-            var SanPhamLienQuan = await _dataContext.SanPhams.Where(p => p.MaDanhMuc == SanPhamtuMaSp.MaDanhMuc && p.MaSanPham != SanPhamtuMaSp.MaSanPham)
-                .Take(3)
-                .ToListAsync();
+            var sanPham = await _dataContext.SanPhams
+        .Include(sp => sp.DanhGiaList) // Load danh sách đánh giá
+        .FirstOrDefaultAsync(sp => sp.MaSanPham == id);
 
-            ViewBag.SPLQ = SanPhamLienQuan;
-            return View(SanPhamtuMaSp);
+            // Lấy danh sách đánh giá liên quan đến sản phẩm
+            sanPham.DanhGiaList = sanPham.DanhGiaList
+         .Where(dg => dg.TrangThai == 1)
+         .ToList();
+
+            //Các sản phẩm liên qua 
+            var sanPhamLienQuan = await _dataContext.SanPhams
+        .Where(p => p.MaDanhMuc == sanPham.MaDanhMuc && p.MaSanPham != sanPham.MaSanPham)
+        .Take(3)
+        .ToListAsync();
+
+            ViewBag.SPLQ = sanPhamLienQuan;
+            return View(sanPham);
         }
         public IActionResult TimKiem(string keyword)
         {

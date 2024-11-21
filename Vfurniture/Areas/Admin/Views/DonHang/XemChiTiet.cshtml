@@ -48,6 +48,7 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                   
                                         TongTienCuaSanPham = item.SoLuong * item.SanPhams.GiaKhuyenMai;
                                         TongTien += TongTienCuaSanPham;
                                         <tr>
@@ -58,13 +59,15 @@
                                             <td>@item.SoLuong</td>
                                             <td>@item.SanPhams.GiaKhuyenMai.ToString("N0")đ</td>
                                             <td>@TongTienCuaSanPham.ToString("N0")đ</td>
-
+                                        
                                         </tr>
                                     }
 
                                 </tbody>
                                 <tr class="total-amount">
-                                    <th colspan="7" class=""><h1>Tổng tiền: @TongTien.ToString("N0")đ</h1></th>
+                                    <th colspan="7" class=""><h3>Phí vận chuyển: @ViewBag.DanhSachDatHangs.ToString("#,##0") đ</h3></th>
+                                    <th colspan="7" class=""><h4>Tổng tiền: @TongTien.ToString("N0")đ</h4></th>
+
                                 </tr>
 
 

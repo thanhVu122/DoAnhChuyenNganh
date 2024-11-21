@@ -16,6 +16,9 @@ namespace Vfurniture.Reponsitory
         public DbSet<DatHangChiTiet> DatHangChiTiets { get; set; }
 
         public DbSet<DanhGia> DanhGias { get; set; }
+        public DbSet<LienHe> LienHes {  get; set; }
+      public DbSet<VanChuyen> VanChuyens { get; set; }      
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Cấu hình các mối quan hệ hoặc các ràng buộc nếu cần.

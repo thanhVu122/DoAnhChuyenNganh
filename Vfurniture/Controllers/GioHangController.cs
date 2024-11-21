@@ -4,6 +4,7 @@ using Vfurniture.Reponsitory;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 using Vfurniture.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 namespace Vfurniture.Controllers
 {
     public class GioHangController : Controller
@@ -16,16 +17,26 @@ namespace Vfurniture.Controllers
         }
         public IActionResult Index()
         {
+            var GiaVanChuyenCookie = Request.Cookies["GiaVanChuyen"];
             List<GioHangsModel> gioHangsItem = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang") ?? new List<GioHangsModel>();
+         
+            decimal giaVanChuyen = 0;
+            if (GiaVanChuyenCookie != null)
+            {
+                var GiaVanChuyenJson = GiaVanChuyenCookie;
+                giaVanChuyen = JsonConvert.DeserializeObject<decimal>(GiaVanChuyenJson);
+            }
+
             GioHangsViewModel cartVM = new()
             {
+                GiaVanChuyen = giaVanChuyen,
                 GioHangs = gioHangsItem,
-                GioHangsTotal = gioHangsItem.Sum(g => (g.GiaKhuyenMai) * g.SoLuong )
+                GioHangsTotal = gioHangsItem.Sum(g => (g.GiaKhuyenMai) * g.SoLuong)
             };
             return View(cartVM);
         }
 
-        public async Task<IActionResult> Them(long  Id)
+        public async Task<IActionResult> Them(long Id)
         {
             SanPhams sanPhams = await _dataContext.SanPhams.FindAsync(Id);
 
@@ -61,10 +72,10 @@ namespace Vfurniture.Controllers
                 HttpContext.Session.Remove("GioHang");
 
             }
-            else 
-            HttpContext.Session.SetJson("GioHang", gioHangs);
-            
-            return RedirectToAction("Index");   
+            else
+                HttpContext.Session.SetJson("GioHang", gioHangs);
+
+            return RedirectToAction("Index");
         }
         public async Task<IActionResult> truSanpham(long Id)
         {
@@ -99,7 +110,61 @@ namespace Vfurniture.Controllers
             else
                 HttpContext.Session.SetJson("GioHang", gioHangs);
             return RedirectToAction("Index");
-            
+
+        }
+
+    
+        //[HttpPost]
+        //public IActionResult GetShippingFee(string tinh, string quan, string phuong)
+        //{
+        //    var existingGia = _dataContext.VanChuyens
+        //        .FirstOrDefault(x => x.TinhThanhPho == tinh && x.QuanHuyen == quan && x.PhuongXa == phuong);
+        //    decimal giaVanChuyen = existingGia?.PhiVanChuyen ?? 0;
+
+        //    return Json(new { success = true, giaVanChuyen });
+        //}
+        [HttpPost]
+        [Route("GioHang/GetShipping")]
+        public async Task<IActionResult> GetShipping(VanChuyen vanChuyen, string quan, string tinh, string phuong)
+        {
+            var existingGia = await _dataContext.VanChuyens
+                .FirstOrDefaultAsync(x => x.TinhThanhPho == tinh && x.QuanHuyen == quan && x.PhuongXa == phuong);
+            decimal GiaVanChuyen = 0;
+            if (existingGia != null)
+            {
+                GiaVanChuyen = existingGia.PhiVanChuyen;
+            }
+            else
+            {
+                // nếu không có trong các phường huyện tỉnh thì cho giá bằng 0
+                GiaVanChuyen = 0;
+            }
+            var GiaVanChuyenJson = JsonConvert.SerializeObject(GiaVanChuyen);
+            try
+            {
+                var cookieOption = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Expires = DateTimeOffset.UtcNow.AddMinutes(10),
+                    Secure = true
+                };
+                Response.Cookies.Append("GiaVanChuyen", GiaVanChuyenJson, cookieOption);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+
+               
+            }
+            return Json(new { GiaVanChuyen });
+        }
+        [HttpGet]
+        [Route("GioHang/DeleteVanChuyen")]
+        public IActionResult DeleteVanChuyen()
+        {
+            Response.Cookies.Delete("GiaVanChuyen");
+            return RedirectToAction("Index","GioHang");
         }
     }
 }

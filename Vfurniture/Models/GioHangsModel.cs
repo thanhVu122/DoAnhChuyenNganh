@@ -31,5 +31,6 @@
 			//Discount = sanPhams.Discount;
 			GiaKhuyenMai = sanPhams.GiaKhuyenMai;
 		}
+
 	}
 }

@@ -1,7 +1,20 @@
 ﻿@using Vfurniture.Models.ViewModels
  @model GioHangsViewModel
 
+<style type="text/css">
+    .css_select_div {
+        text-align: center;
+    }
 
+    .css_select {
+        display: inline-table;
+        width: 25%;
+        padding: 5px;
+        margin: 5px 2%;
+        border: solid 1px #686868;
+        border-radius: 5px;
+    }
+</style>
 <div id="layout-cart">
     <div class="breadcrumb-shop">
         <div class="breadcrumbs">
@@ -18,7 +31,7 @@
             </div>
         </div>
         <div class="row pd_page">
-            <div class="col-md-8 col-xs-12 col-sm-8">
+            <div class="col-md-5 col-xs-12 col-sm-5">
                 <div class="list_form_cart">
 
                     <form action="/cart" method="post" id="cartformpage">
@@ -99,20 +112,54 @@
 
                 </div>
             </div>
-            <div class="col-md-4 col-xs-12 col-sm-4 order_cart_fix">
+            <div class="col-md-7 col-xs-12 col-sm-7 order_cart_fix">
                 <div class="wamper_order_cart">
+                    <div class="order_block">
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Tỉnh Thành</label> <br />
+                                <select class="css_select" id="tinh" name="tinh" title="Chọn Tỉnh Thành">
+                                    <option value="0">Tỉnh Thành</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quận Huyện</label><br />
+                                <select class="css_select" id="quan" name="quan" title="Chọn Quận Huyện">
+                                    <option value="0">Quận Huyện</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phường Xã</label><br />
+                                <select class="css_select" id="phuong" name="phuong" title="Chọn Phường Xã">
+                                    <option value="0">Phường Xã</option>
+                                </select>
+                            </div>
+                            <a type="submit" class="btn btn-success " asp-controller="GioHang" asp-action="DeleteVanChuyen">Không tính vận chuyển</a>
+                            <button type="submit" class="btn btn-secondary  btn-add-shipping">Tinh</button>
+                        </div>
+                    </div>
                     <div class="order_block">
                         <div class="order_title">
                             <h2>Thông tin đơn hàng</h2>
                         </div>
                         <div class="order_total_price">
-                            <p>Tổng tiền: <span>@Model.GioHangsTotal.ToString("N0")đ</span></p>
+                            <p>Tổng tiền của sản phảm: <span>@Model.GioHangsTotal.ToString("N0")đ</span></p> <br />
+                            <p>Phí vận chuyển: <span data-fee="shipping">@Model.GiaVanChuyen.ToString("N0")đ</span></p>
+
                         </div>
                         <div class="order_cart_action">
                             <div class="cart-buttons">
                                 @if (User.Identity?.IsAuthenticated ?? false)
                                 {
-                                    <a asp-controller="Checkout" asp-action="Checkout" class="btn-checkout button dark">Thanh toán</a>
+                                    if (Model.GioHangsTotal > 0)
+                                    {
+                                        <a asp-controller="Checkout" asp-action="Checkout" class="btn-checkout button dark">Thanh toán</a>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-danger">Giỏ hàng của bạn không đủ điều kiện để thanh toán.</p>
+                                    }
                                 }
                                 else
                                 {
@@ -122,17 +169,82 @@
                         </div>
                     </div>
                 </div>
-                <a class="countine_order_cart" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
-
-                <div class="cart_note_new">
-                    <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Không rủi ro. Đặt hàng trước, thanh toán sau tại nhà. Miễn phí giao hàng &amp; lắp đặt</strong> tại tất cả quận huyện thuộc TP.HCM, Hà Nội, Khu đô thị Ecopark, Biên Hòa và một số khu vực thuộc Bình Dương (*) </p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i> Đơn hàng của quý khách sẽ được  <strong>giao hàng trong vòng 3 ngày</strong>, vui lòng đợi nhân viên tư vấn xác nhận lịch giao hàng trước khi thực hiện chuyển  khoản đơn hàng </p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Miễn phí 1 đổi 1 - Bảo hành 2 năm - Bảo trì trọn đời</strong> (**)</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i> Tất cả sản phẩm được thiết kế bởi các chuyên gia thiết kế nội thất đến từ <strong>Đan Mạch và Hàn Quốc</strong></p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i> <strong> Chất lượng Quốc Tế đảm bảo theo tiêu chuẩn</strong> cho người dùng tại Việt Nam</p>
-
-
-                </div>
+                <a class="countine_order_cart" title="Tiếp tục mua hàng" asp-controller="Home" asp-action="index"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
             </div>
         </div>
     </div>
+
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        }
+        <script src="https://esgoo.net/scripts/jquery.js"></script>
+        <script>
+            $(".btn-add-shipping").click(function () {
+                var tinh = $("#tinh").find("option:selected").text();
+                var quan = $("#quan").find("option:selected").text();
+                var phuong = $("#phuong").find("option:selected").text();
+
+                if (tinh === "" || quan === "" || phuong === "") {
+                    Swal.fire("Vui lòng chọn đầy đủ Tỉnh, Quận, Phường.");
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/GioHang/GetShipping",
+                        data: { tinh: tinh, quan: quan, phuong: phuong },
+                        success: function (response) {
+                            if (response) {
+                                // Cập nhật phí vận chuyển vào giao diện
+                                // $("span[data-fee='shipping']").text(response.giaVanChuyen.toLocaleString('vi-VN') + "đ");
+                                location.reload();
+                            } 
+                        },
+                  
+                    });
+                }
+            });
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                //Lấy tỉnh thành
+                $.getJSON('https://esgoo.net/api-tinhthanh/1/0.htm', function (data_tinh) {
+                    if (data_tinh.error == 0) {
+                        $.each(data_tinh.data, function (key_tinh, val_tinh) {
+                            $("#tinh").append('<option value="' + val_tinh.id + '">' + val_tinh.full_name + '</option>');
+                        });
+                        $("#tinh").change(function (e) {
+                            var idtinh = $(this).val();
+                            //Lấy quận huyện
+                            $.getJSON('https://esgoo.net/api-tinhthanh/2/' + idtinh + '.htm', function (data_quan) {
+                                if (data_quan.error == 0) {
+                                    $("#quan").html('<option value="0">Quận Huyện</option>');
+                                    $("#phuong").html('<option value="0">Phường Xã</option>');
+                                    $.each(data_quan.data, function (key_quan, val_quan) {
+                                        $("#quan").append('<option value="' + val_quan.id + '">' + val_quan.full_name + '</option>');
+                                    });
+                                    //Lấy phường xã
+                                    $("#quan").change(function (e) {
+                                        var idquan = $(this).val();
+                                        $.getJSON('https://esgoo.net/api-tinhthanh/3/' + idquan + '.htm', function (data_phuong) {
+                                            if (data_phuong.error == 0) {
+                                                $("#phuong").html('<option value="0">Phường Xã</option>');
+                                                $.each(data_phuong.data, function (key_phuong, val_phuong) {
+                                                    $("#phuong").append('<option value="' + val_phuong.id + '">' + val_phuong.full_name + '</option>');
+                                                });
+                                            }
+                                        });
+                                    });
+
+                                }
+                            });
+                        });
+
+                    }
+                });
+            });
+        </script>
+    }

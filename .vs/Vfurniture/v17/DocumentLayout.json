@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\DoAn2024-2025\\Vfurniture\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\views\\sanpham\\deltail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\views\\sanpham\\deltail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\models\\danhgia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\models\\danhgia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\models\\sanphams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\models\\sanphams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\controllers\\sanphamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 202,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,58 +30,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DanhGia.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\DanhGia.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Models\\DanhGia.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\DanhGia.cs",
-              "RelativeToolTip": "Vfurniture\\Models\\DanhGia.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAmwBgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:52:39.003Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SanPhamController.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\SanPhamController.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Controllers\\SanPhamController.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\SanPhamController.cs",
-              "RelativeToolTip": "Vfurniture\\Controllers\\SanPhamController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T16:18:07.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SanPhams.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\SanPhams.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Models\\SanPhams.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\SanPhams.cs",
-              "RelativeToolTip": "Vfurniture\\Models\\SanPhams.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAuwFIAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T17:06:23.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Deltail.cshtml",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Views\\SanPham\\Deltail.cshtml",
-              "RelativeDocumentMoniker": "Vfurniture\\Views\\SanPham\\Deltail.cshtml",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Views\\SanPham\\Deltail.cshtml",
-              "RelativeToolTip": "Vfurniture\\Views\\SanPham\\Deltail.cshtml",
-              "ViewState": "AgIAANEAAAAAAAAAAAAAANoAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-20T15:45:55.945Z",
-              "EditorCaption": ""
             }
           ]
         }

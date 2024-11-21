@@ -35,7 +35,8 @@ namespace Vfurniture.Areas.Admin.Controllers
                 .Include(od => od.SanPhams)
                 .Where(od => od.MaDatHang == MaDonHang)
                 .ToListAsync();
-
+            var GiaShipping = _dataContext.DatHangs.Where(od => od.MaDatHang == MaDonHang).First();
+            ViewBag.DanhSachDatHangs = GiaShipping.GiaShip;
             // Nếu không có chi tiết đơn hàng nào
             if (chiTietDonHang == null || !chiTietDonHang.Any())
             {

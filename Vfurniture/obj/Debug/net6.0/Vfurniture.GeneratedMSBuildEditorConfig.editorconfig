@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\DoAn2024-2025\Vfurniture\Vfurniture
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/DoAn2024-2025/Vfurniture/Vfurniture/Areas/Admin/Views/DanhGia/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaEdpYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DoAn2024-2025/Vfurniture/Vfurniture/Areas/Admin/Views/DanhMuc/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFuaE11Y1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -96,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/DoAn2024-2025/Vfurniture/Vfurniture/Areas/Admin/Views/VanChuyen/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVmFuQ2h1eWVuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/DoAn2024-2025/Vfurniture/Vfurniture/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -126,6 +134,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/DoAn2024-2025/Vfurniture/Vfurniture/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DoAn2024-2025/Vfurniture/Vfurniture/Views/LienHe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGllbkhlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DoAn2024-2025/Vfurniture/Vfurniture/Views/LienHe/ListLienHeIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGllbkhlXExpc3RMaWVuSGVJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/DoAn2024-2025/Vfurniture/Vfurniture/Views/SanPham/DanhSach.cshtml]

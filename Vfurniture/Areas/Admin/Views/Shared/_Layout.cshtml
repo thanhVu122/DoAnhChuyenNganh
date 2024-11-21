@@ -37,8 +37,8 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <a class="nav-link" asp-controller="Home" asp-action="Index" >
+                    <i class="fas fa-fw fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
             </li>
@@ -52,13 +52,13 @@
             <!-- Nav Items - Categories -->
             <li class="nav-item">
                 <a class="nav-link" asp-controller="DanhMuc" asp-action="Index">
-                    <i class="fas fa-fw fa-list"></i>
+                    <i class="fas fa-fw fa-th-large"></i>
                     <span>Danh mục</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" asp-controller="SanPham" asp-action="Index">
-                    <i class="fas fa-fw fa-list"></i>
+                    <i class="fas fa-fw fa-cogs"></i>
                     <span>Sản phẩm</span>
                 </a>
             </li>
@@ -74,23 +74,25 @@
                     <span>Người dùng</span>
                 </a>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                <a class="nav-link" asp-controller="DanhGia" asp-action="Index">
+                    <i class="fas fa-fw fa-star"></i>
+                    <span>Đánh giá</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="LienHe" asp-action="Index">
+                    <i class="fas fa-fw fa-phone-alt"></i>
+                    <span>Liên hệ</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="VanChuyen" asp-action="Index">
+                    <i class="fas fa-fw fa-truck"></i>
+                    <span>Phí vận chuyển</span>
+                </a>
+            </li>
+          
 
             <!-- Divider -->
             <hr class="sidebar-divider">

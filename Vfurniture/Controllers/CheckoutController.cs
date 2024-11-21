@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Security.Claims;
 using Vfurniture.Areas.Admin.Reponsitory;
 using Vfurniture.Models;
@@ -27,12 +28,21 @@ namespace Vfurniture.Controllers
             {
                 var orderCode = Guid.NewGuid().ToString();
                 var orderItem = new DatHang();
+                var GiaVanChuyenCookie = Request.Cookies["GiaVanChuyen"];
+                decimal giaVanChuyen = 0;
+                if (GiaVanChuyenCookie != null)
+                {
+                    var GiaVanChuyenJson = GiaVanChuyenCookie;
+                    giaVanChuyen = JsonConvert.DeserializeObject<decimal>(GiaVanChuyenJson);
+                    orderItem.GiaShip = giaVanChuyen;
+                }
+
                 orderItem.MaDatHang = orderCode;
                 orderItem.TenNguoiDat = userEmail;
                 orderItem.TrangThai = 1;
                 orderItem.NgayTao = DateTime.Now;
                 _dataContext.Add(orderItem);
-                _dataContext.SaveChanges();
+                await _dataContext.SaveChangesAsync();  // Đảm bảo gọi SaveChangesAsync()
                 List<GioHangsModel> gioHangsItem = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang") ?? new List<GioHangsModel>();
                 foreach (var item in gioHangsItem)
                 {

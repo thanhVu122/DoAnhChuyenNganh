@@ -4,6 +4,6 @@
 	{
 		public List<GioHangsModel> GioHangs { get; set; }	
 		public decimal GioHangsTotal { get; set; }	
-
+		public decimal GiaVanChuyen {  get; set; }
 	}
 }

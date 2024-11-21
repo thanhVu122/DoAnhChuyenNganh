@@ -7,5 +7,6 @@
         public DateTime NgayTao { get; set; }   
         public int TrangThai {  get; set; }
         public string TenNguoiDat {  get; set; }
+        public decimal GiaShip { get; set; }
     }
 }

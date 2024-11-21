@@ -84,7 +84,11 @@ app.MapControllerRoute(
     pattern: "DanhMuc/{MaDanhMuc?}",
     defaults: new {  controller = "DanhMuc", action = "Index" }
 );
-
+app.MapControllerRoute(
+    name: "LienHe",
+    pattern: "LienHe",
+    defaults: new { controller = "LienHe", action = "Index" }
+);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
