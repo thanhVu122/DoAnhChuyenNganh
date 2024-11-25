@@ -12,13 +12,13 @@ namespace Vfurniture.Reponsitory
         }
         public DbSet<DanhMucs> DanhMucs { get; set; }
         public DbSet<SanPhams> SanPhams { get; set; }
-        public DbSet<DatHang> DatHangs{ get; set; }
+        public DbSet<DatHang> DatHangs { get; set; }
         public DbSet<DatHangChiTiet> DatHangChiTiets { get; set; }
 
         public DbSet<DanhGia> DanhGias { get; set; }
-        public DbSet<LienHe> LienHes {  get; set; }
-      public DbSet<VanChuyen> VanChuyens { get; set; }      
-
+        public DbSet<LienHe> LienHes { get; set; }
+        public DbSet<VanChuyen> VanChuyens { get; set; }
+        public DbSet<KhuyenMaiModel> KhuyenMaiModels { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Cấu hình các mối quan hệ hoặc các ràng buộc nếu cần.
@@ -27,6 +27,12 @@ namespace Vfurniture.Reponsitory
                 .HasOne(sp => sp.DanhMuc)
                 .WithMany(dm => dm.SanPhams)
                 .HasForeignKey(sp => sp.MaDanhMuc);
+            // Mối quan hệ giữa DatHang và DatHangChiTiet
+            modelBuilder.Entity<DatHang>()
+                .HasMany(dh => dh.ChiTietDonHangs)
+                .WithOne(ct => ct.DatHang)
+                .HasForeignKey(ct => ct.MaDatHang)
+                .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
         }

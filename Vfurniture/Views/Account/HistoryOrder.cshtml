@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Vfurniture.Models.DatHang>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4>Lịch sử đơn hàng của @ViewBag.UserEmail</h4>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Lịch sử đơn hàng
+                </div>
+                <div class="card-body">
+                    @if (Model.Any())
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Trạng thái</th>
+                                    <th>Chi tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <td>@order.MaDatHang</td>
+                                        <td>@order.NgayTao.ToString("dd/MM/yyyy")</td>
+
+                                        <td>
+                                            @if (order.TrangThai == 1)
+                                            {
+                                                <span class="text-success">Đơn hàng mới</span>
+                                            }
+                                            else if (order.TrangThai == 0)
+                                            {
+                                                <span class="text text-secondary">Đã xử lý</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">Đã hủy</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" asp-action="OrderDetail" asp-route-id="@order.MaDatHang">
+                                                Xem chi tiết
+                                            </a>
+                                        </td>
+                                        <td>
+                                           @if(order.TrangThai!=2){
+                                                <a class="btn btn-sm btn-primary" asp-action="Cancel" asp-route-orderCode="@order.MaDatHang">
+                                                    Huỷ đơn hàng
+                                                </a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-center">Bạn chưa có đơn hàng nào.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

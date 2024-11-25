@@ -1,4 +1,4 @@
-﻿@using Vfurniture.Models.ViewModels
+﻿    @using Vfurniture.Models.ViewModels
  @model GioHangsViewModel
 
 <style type="text/css">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="row pd_page">
-            <div class="col-md-5 col-xs-12 col-sm-5">
+            <div class="col-md-6 col-xs-12 col-sm-6">
                 <div class="list_form_cart">
 
                     <form action="/cart" method="post" id="cartformpage">
@@ -76,7 +76,7 @@
                                                             </div>
                                                             <p class="price float-end">
                                                                 <span class="text">Thành tiền: </span>
-                                                                <span class="line-item-total">@item.tongTien.ToString("N0")đ</span>
+                                                                <span class="line-item-total">@item.TongTien.ToString("N0")đ</span>
                                                             </p>
                                                         </td>
                                                         <td class="remove position-absolute end-0 me-3">
@@ -112,7 +112,7 @@
 
                 </div>
             </div>
-            <div class="col-md-7 col-xs-12 col-sm-7 order_cart_fix">
+            <div class="col-md-6 col-xs-12 col-sm-6 order_cart_fix">
                 <div class="wamper_order_cart">
                     <div class="order_block">
                         <div class="row">
@@ -140,34 +140,61 @@
                         </div>
                     </div>
                     <div class="order_block">
-                        <div class="order_title">
-                            <h2>Thông tin đơn hàng</h2>
-                        </div>
-                        <div class="order_total_price">
-                            <p>Tổng tiền của sản phảm: <span>@Model.GioHangsTotal.ToString("N0")đ</span></p> <br />
-                            <p>Phí vận chuyển: <span data-fee="shipping">@Model.GiaVanChuyen.ToString("N0")đ</span></p>
+                        <div>
+                            <h3>Áp dụng mã khuyến mãi</h3>
+                            <form id="applyCouponForm" method="post" asp-action="ApplyCoupon">
+                                <input type="text" name="couponCode" placeholder="Nhập mã khuyến mãi" required />
+                                <button type="submit">Áp dụng</button>
+                            </form>
 
+                            @if (TempData["CouponMessage"] != null)
+                            {
+                                <div id="couponMessage" style="color: red;">
+                                    @TempData["CouponMessage"]
+                                </div>
+                            }
                         </div>
-                        <div class="order_cart_action">
-                            <div class="cart-buttons">
-                                @if (User.Identity?.IsAuthenticated ?? false)
-                                {
-                                    if (Model.GioHangsTotal > 0)
+
+                        <div class="order_total_price">
+                            <table>
+                                <tr>
+                                    <td><p>Tổng tiền của sản phẩm: </p></td>
+                                    <td><p id="gioHangsTotal">@Model.GioHangsTotal.ToString("N0")đ</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Phí vận chuyển: </p></td>
+                                    <td><p id="giaVanChuyen">@Model.GiaVanChuyen.ToString("N0")đ</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Giảm giá: </p></td>
+                                    <td><p id="tienGiamGia">@Model.TienGiamGia.ToString("N0")đ</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Tổng thanh toán: </p></td>
+                                    <td><p id="tongThanhToan">@Model.TongThanhToan.ToString("N0")đ</p></td>
+                                </tr>
+                            </table>
+                            <div class="order_cart_action">
+                                <div class="cart-buttons">
+                                    @if (User.Identity?.IsAuthenticated ?? false)
                                     {
-                                        <a asp-controller="Checkout" asp-action="Checkout" class="btn-checkout button dark">Thanh toán</a>
+                                        if (Model.GioHangsTotal > 0)
+                                        {
+                                            <a asp-controller="Checkout" asp-action="Checkout" class="btn-checkout button dark">Thanh toán</a>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-danger">Giỏ hàng của bạn không đủ điều kiện để thanh toán.</p>
+                                        }
                                     }
                                     else
                                     {
-                                        <p class="text-danger">Giỏ hàng của bạn không đủ điều kiện để thanh toán.</p>
+                                        <p>Bạn cần <a asp-controller="Account" asp-action="Login">đăng nhập</a> để thanh toán.</p>
                                     }
-                                }
-                                else
-                                {
-                                    <p>Bạn cần <a asp-controller="Account" asp-action="Login">đăng nhập</a> để thanh toán.</p>
-                                }
-                            </div>
+                                </div>
                         </div>
                     </div>
+
                 </div>
                 <a class="countine_order_cart" title="Tiếp tục mua hàng" asp-controller="Home" asp-action="index"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
             </div>
@@ -199,9 +226,9 @@
                                 // Cập nhật phí vận chuyển vào giao diện
                                 // $("span[data-fee='shipping']").text(response.giaVanChuyen.toLocaleString('vi-VN') + "đ");
                                 location.reload();
-                            } 
+                            }
                         },
-                  
+
                     });
                 }
             });
@@ -247,4 +274,26 @@
                 });
             });
         </script>
+        <script>$(".btn-add-shipping").click(function () {
+    var tinh = $("#tinh").find("option:selected").text();
+    var quan = $("#quan").find("option:selected").text();
+    var phuong = $("#phuong").find("option:selected").text();
+    var couponCode = $("input[name='couponCode']").val(); // Lấy mã khuyến mãi
+
+    if (tinh === "" || quan === "" || phuong === "") {
+        Swal.fire("Vui lòng chọn đầy đủ Tỉnh, Quận, Phường.");
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "/GioHang/GetShipping",
+            data: { tinh: tinh, quan: quan, phuong: phuong, couponCode: couponCode },
+            success: function (response) {
+                if (response) {
+                    location.reload(); // Cập nhật lại giao diện
+                }
+            },
+        });
+    }
+});
+</script>
     }

@@ -63,7 +63,7 @@ namespace Vfurniture.Controllers
                 var message = "Chúng tôi cảm ơn bạn đã mua sắm trên VFurniture. Đơn hàng của bạn đang được xử lý.";
                 await _emailSender.SendEmailAsync(receiver, subject, message);  
                 TempData["success"] = "Đơn hàng đã được tạo.Chờ xử lý";
-                return RedirectToAction("Index","GioHang");
+                return RedirectToAction("HistoryOrder", "Acccount");
             }
             return View();
         }

@@ -19,7 +19,7 @@ namespace Vfurniture.Controllers
         {
             var GiaVanChuyenCookie = Request.Cookies["GiaVanChuyen"];
             List<GioHangsModel> gioHangsItem = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang") ?? new List<GioHangsModel>();
-         
+
             decimal giaVanChuyen = 0;
             if (GiaVanChuyenCookie != null)
             {
@@ -113,16 +113,7 @@ namespace Vfurniture.Controllers
 
         }
 
-    
-        //[HttpPost]
-        //public IActionResult GetShippingFee(string tinh, string quan, string phuong)
-        //{
-        //    var existingGia = _dataContext.VanChuyens
-        //        .FirstOrDefault(x => x.TinhThanhPho == tinh && x.QuanHuyen == quan && x.PhuongXa == phuong);
-        //    decimal giaVanChuyen = existingGia?.PhiVanChuyen ?? 0;
 
-        //    return Json(new { success = true, giaVanChuyen });
-        //}
         [HttpPost]
         [Route("GioHang/GetShipping")]
         public async Task<IActionResult> GetShipping(VanChuyen vanChuyen, string quan, string tinh, string phuong)
@@ -155,7 +146,7 @@ namespace Vfurniture.Controllers
             {
                 Console.WriteLine($"Error: {ex.Message}");
 
-               
+
             }
             return Json(new { GiaVanChuyen });
         }
@@ -164,7 +155,54 @@ namespace Vfurniture.Controllers
         public IActionResult DeleteVanChuyen()
         {
             Response.Cookies.Delete("GiaVanChuyen");
-            return RedirectToAction("Index","GioHang");
+            return RedirectToAction("Index", "GioHang");
         }
+
+        private GioHangsViewModel GetGioHangsViewModel()
+        {
+            // Lấy giỏ hàng từ session (dưới dạng JSON)
+            List<GioHangsModel> gioHangsItem = HttpContext.Session.GetJson<List<GioHangsModel>>("GioHang") ?? new List<GioHangsModel>();
+
+            decimal giaVanChuyen = 0;
+            var GiaVanChuyenCookie = Request.Cookies["GiaVanChuyen"];
+            if (GiaVanChuyenCookie != null)
+            {
+                giaVanChuyen = JsonConvert.DeserializeObject<decimal>(GiaVanChuyenCookie);
+            }
+
+            return new GioHangsViewModel
+            {
+                GiaVanChuyen = giaVanChuyen,
+                GioHangs = gioHangsItem,
+                GioHangsTotal = gioHangsItem.Sum(g => g.GiaKhuyenMai * g.SoLuong)
+            };
+        }
+
+
+    //    [HttpPost]
+    //    public IActionResult ApplyCoupon(string couponCode)
+    //    {
+    //        var viewModel = GetGioHangsViewModel();  // Lấy thông tin giỏ hàng từ phương thức JSON
+
+    //        var khuyenMai = _dataContext.KhuyenMaiModels
+    //            .FirstOrDefault(km => km.TenKhuyenMai == "cho");
+
+    //        if (khuyenMai != null && khuyenMai.TrangThai && khuyenMai.NgayBatdau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
+    //        {
+    //            viewModel.MaKhuyenMai = couponCode;
+    //            viewModel.TienGiamGia = (viewModel.GioHangsTotal * khuyenMai.PhanTramGiam) / 100;
+    //            TempData["CouponMessage"] = "Mã khuyến mãi đã được áp dụng.";
+    //        }
+    //        else
+    //        {
+    //            TempData["CouponMessage"] = "Mã khuyến mãi không hợp lệ hoặc đã hết hạn.";
+    //        }
+
+    //        // Lưu giỏ hàng đã cập nhật vào session dưới dạng JSON
+    //        HttpContext.Session.SetJson("GioHang", viewModel.GioHangs);
+
+    //        return RedirectToAction("Index");
+    //    }
+
     }
 }

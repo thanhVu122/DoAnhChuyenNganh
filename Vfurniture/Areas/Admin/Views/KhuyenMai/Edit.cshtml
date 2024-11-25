@@ -1,0 +1,97 @@
+﻿@model KhuyenMaiModel
+@{
+    ViewData["title"] = "Sửa khuyến mãi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Khuyến mãi</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <table class="">
+                                    <tr>
+                                        <div class="form-group">
+                                            <label asp-for="TenKhuyenMai"></label>
+                                            <input asp-for="TenKhuyenMai" class="form-control" />
+                                            <span asp-validation-for="TenKhuyenMai" class="text-danger"></span>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            <label asp-for="Mota"></label>
+                                            <textarea asp-for="Mota" class="form-control"></textarea>
+                                            <span asp-validation-for="Mota" class="text-danger"></span>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            <label asp-for="PhanTramGiam"></label>
+                                            <input asp-for="PhanTramGiam" class="form-control" placeholder="Giá" />
+                                            <span asp-validation-for="PhanTramGiam" class="text-danger"></span>
+                                        </div>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <label asp-for="NgayBatdau"></label>
+                                                <input type="datetime" asp-for="NgayBatdau" class="form-control" />
+                                                <span asp-validation-for="NgayBatdau" class="text-danger"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label asp-for="SoLuong"></label>
+                                                <input asp-for="SoLuong" type="number" class="form-control" />
+                                                <span asp-validation-for="SoLuong" class="text-danger"></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label asp-for="NgayKetThuc"></label>
+                                                <input type="datetime-local" asp-for="NgayKetThuc" class="form-control" />
+                                                <span asp-validation-for="NgayKetThuc" class="text-danger"></span>
+                                            </div>
+                                        </td>
+                                        <div class="form-group">
+                                            <label asp-for="TrangThai">Trạng Thái</label>
+                                            <select asp-for="TrangThai" class="form-control">
+                                                <option value="true">Kích hoạt</option>
+                                                <option value="false">Tắt kích hoạt</option>
+                                            </select>
+                                            <span asp-validation-for="TrangThai" class="text-danger"></span>
+                                        </div>
+                                    </tr>
+                                </table>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="datetime-local" class="btn btn-primary btn-block">Lưu</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a asp-controller="KhuyenMai" asp-action="Index" type="submit" class="btn btn-defautl">Quay lai</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}

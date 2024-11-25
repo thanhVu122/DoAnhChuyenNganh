@@ -44,7 +44,6 @@
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
@@ -53,7 +52,7 @@
                                         TongTien += TongTienCuaSanPham;
                                         <tr>
                                             <input type="hidden" asp-for="@item.MaDatHang" class="getId" />
-                                            <td>@item.Id</td>
+                                            <td>@item.MaDatHang</td>
                                             <td>@item.TenNguoiDat</td>
                                             <td>@item.SanPhams.TenSanPham</td>
                                             <td>@item.SoLuong</td>
@@ -76,6 +75,7 @@
                                 <h3>Trạng thái: </h3><select class="form-control select-update-order order-status">
                                     <option value="1">Đơn hàng mới</option>
                                     <option value="0">Đã xử lý</option>
+                                    <option value="3">Hủy đơn hàng</option>
                                 </select>
                             </div>
                         </div>

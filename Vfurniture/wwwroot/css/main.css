@@ -2735,7 +2735,7 @@ h2.title {
 
 .wamper_order_cart .order_block {
     border: 1px solid #dfe0e1;
-    padding: 20px 20px 10px;
+    padding: 10px 20px 10px;
 }
 
     .wamper_order_cart .order_block .order_title h2 {
@@ -2838,3 +2838,5 @@ h2.title {
 .product-details .product-detail-wapper .hinhnho img:hover {
     border: 2px solid #f00;
 }
+
+

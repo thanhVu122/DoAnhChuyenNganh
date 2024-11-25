@@ -1,0 +1,95 @@
+﻿@model KhuyenMaiModel
+@{
+    ViewData["title"] = "Danh sách khuyến mãi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Khuyến mãi</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Bảng khuyến mãi</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">     
+                    <div class="Them-HanhDong">
+                        <a asp-controller="KhuyenMai" asp-action="Create">Thêm quyền</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Mã khuyến mãi</th>
+                                        <th>Tên khuyến mãi</th>
+                                        <th>Mô tả</th>
+                                        <th>Số lượng </th>
+                                        <th>Phần trăm giảm giá </th>
+                                        <th>Ngày bắt đầu</th>
+                                        <th>Ngày kết thúc</th>
+                                        <th>Thời gian</th>
+                                        <th>Trạng thái</th>
+                                        <th>Tác vụ </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in ViewBag.DSKM)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.TenKhuyenMai</td>
+                                            <td>@item.Mota</td>
+                                            <td>@item.SoLuong</td>
+                                            <td>@item.PhanTramGiam %</td>
+
+                                            <td>@item.NgayBatdau</td>
+                                            <td>@item.NgayKetThuc</td>
+                                            <td>
+                                                @if (item.NgayKetThuc < DateTime.Now)
+                                                {
+                                                    <span class="text text-danger">Hết hạn </span>
+                                                }
+                                                else
+                                                {
+                                                    TimeSpan NgayCon = item.NgayKetThuc - DateTime.Now;
+                                                    int Ngay = NgayCon.Days;
+                                                    @if (Ngay == 0)
+                                                    {
+                                                        <span class="text text-decoration-underline">Ngày hôm nay </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="text text-success">Còn @Ngay ngày nữa </span>
+                                                    }
+                                                }
+                                            </td>
+                                             <td>
+                                                         @(item.TrangThai == true ? "Kích hoạt" : "Hết hạn")
+                                              </td>   
+                                            <td>
+                                                <a class="btn btn-success mb-1" asp-controller="KhuyenMai" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                                                <a class="btn btn-danger" asp-controller="KhuyenMai" asp-action="Delete" asp-route-Id="@item.Id">Xóa</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

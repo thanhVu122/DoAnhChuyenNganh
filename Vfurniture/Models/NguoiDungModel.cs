@@ -19,7 +19,7 @@ namespace Vfurniture.Models
 
 
         [DisplayName("Ngày sinh")]
-        public DateTime NgaySinh { get; set; } // Ngày sinh người dùng
+        public DateTime? NgaySinh { get; set; } // Ngày sinh người dùng
 
         [Required(ErrorMessage = "Vui lòng nhập tài khoản")]
         [DisplayName("Tài khoản")]

@@ -49,10 +49,7 @@
                                 </div>
                             </div>
 
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>
-                           @*  <a class="btn btn-default add-to-cart" asp-controller="Giohang" asp-action="Them" asp-route-Id="@item.MaSanPham">
-                                <i class="fa fa-shopping-cart"></i>Giỏ hàng
-                            </a> *@
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Mua ngay</a>                        
                             <button class="btn btn-default add-to-cart"  data-product_id="@item.MaSanPham">
                                 <i class="fa fa-shopping-cart"></i>Giỏ hàng
                             </button> 
@@ -74,9 +71,6 @@
         $(document).ready(function () {
             $('.add-to-cart').click(function () {
                 var Id = $(this).data("product_id"); 
-
-
-         
                 $.ajax({
                     type: "POST", // Sửa từ "typeof" thành "type"
                     url: "@Url.Action("Them", "GioHang")", // Sửa "URL" thành "url"

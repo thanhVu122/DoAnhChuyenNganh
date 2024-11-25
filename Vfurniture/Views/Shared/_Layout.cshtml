@@ -24,6 +24,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- Thêm Font Awesome từ CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head><!--/head-->
@@ -77,17 +80,27 @@
                                 @if (User.Identity?.IsAuthenticated ?? false)
                                 {
 
-                                    <li><a asp-controller="Account"><i class="fa fa-user"></i>@User.Identity.Name</a></li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" asp-controller="Account">
+                                            <i class="fa fa-user"></i>@User.Identity.Name
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="Account" asp-action="HistoryOrder"><i class="fa fa-history"></i>Đơn hàng</a></li>
+                                            <li><a asp-controller="Account" asp-action="UpdatInfo"><i class="fa fa-user-circle"></i>Thông tin cá nhân</a></li>
+                                            <li><a asp-controller="" asp-action=""><i class="fa fa-key"></i>Quên mật khẩu</a></li>
+                                            <li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Thoát</a></li>
+                                           
+                                        </ul>
+                                    </li>
                                     @if (User.IsInRole("admin")) // Kiểm tra nếu người dùng thuộc vai trò Admin
                                     {
                                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Index"><i class="fa fa-cogs"></i>Trang Admin</a></li>
-                                    }
-                                    <li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-crosshairs"></i>Thoát</a></li>
-                                }
+                                    } 
+                                }  
                                 else
                                 {
-                                    <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-user"></i>Đăng nhập</a></li>
-                                    <li><a asp-controller="Account" asp-action="Sigister"><i class="fa fa-user"></i>Đăng ký</a></li>
+                                    <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-sign-in-alt"></i>Đăng nhập</a></li>
+                                    <li><a asp-controller="Account" asp-action="Sigister"><i class="fa fa-user-plus"></i>Đăng ký</a></li>
                                 }
 
                             </ul>
@@ -113,26 +126,6 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a asp-controller="Home" asp-action="Index" class="active">Trang chủ</a></li>
-                                <li class="dropdown">
-                                    <a asp-action="Index" asp-controller="DanhMuc">Danh mục<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li>
-                                            <a>
-                                            </a>
-                                        </li>
-                                        <li><a>Product Details</a></li>
-                                        <li><a>Checkout</a></li>
-                                        <li><a>Cart</a></li>
-                                        <li><a>Login</a></li>
-                                    </ul>
-                                </li>
-                                @* <li class="dropdown">
-                                <a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                <li><a href="blog.html">Blog List</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                </ul>
-                                </li> *@
                                 <li><a asp-controller="TinTuc" asp-action="Index">Tin tức</a></li>
                                 <li><a asp-controller="LienHe" asp-action="Index">Liên hệ</a></li>
                             </ul>
@@ -174,7 +167,7 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
+                            <h2><span>V</span>furniture</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
                         </div>
                     </div>

@@ -1,0 +1,12 @@
+﻿@{
+    var currentUrl = Url.ActionContext.HttpContext.Request.Path;
+    var maDMParam = Url.ActionContext.HttpContext.Request.Query["maDM"];
+}
+<!-- Sắp xếp -->
+<label for="sortOrder">Sắp xếp:</label>
+<select name="sortOrder" id="sortOrder" class="form-select">
+    <option value="@currentUrl?maDM=@maDMParam&Sort_by=price_newest">Sản phẩm mới</option>
+    <option value="@currentUrl?maDM=@maDMParam&Sort_by=price_oldest">Sản phẩm cũ</option>
+    <option value="@currentUrl?maDM=@maDMParam&Sort_by=price_asc">Giá (Thấp đến Cao)</option>
+    <option value="@currentUrl?maDM=@maDMParam&Sort_by=price_desc">Giá (Cao đến Thấp)</option>
+</select>

@@ -18,7 +18,7 @@ namespace Vfurniture.Controllers
 
 		public IActionResult Index()
 		{
-			var sanpham=_dataContext.SanPhams.ToList();	
+			var sanpham=_dataContext.SanPhams.OrderByDescending(p=>p.MaSanPham).ToList();	
 			return View(sanpham);
 		}
 

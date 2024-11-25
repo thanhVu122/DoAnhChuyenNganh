@@ -180,6 +180,9 @@ namespace Vfurniture.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<DateTime?>("NgaySinh")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -201,6 +204,9 @@ namespace Vfurniture.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenNguoiDung")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -281,16 +287,16 @@ namespace Vfurniture.Migrations
 
             modelBuilder.Entity("Vfurniture.Models.DatHang", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("MaDatHang")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("GiaShip")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("MaDatHang")
+                    b.Property<decimal>("GiamGia")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("MaKhuyenMai")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("NgayTao")
@@ -302,7 +308,7 @@ namespace Vfurniture.Migrations
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("MaDatHang");
 
                     b.ToTable("DatHangs");
                 });
@@ -319,7 +325,7 @@ namespace Vfurniture.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("MaDatHang")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<long>("MaSanPham")
                         .HasColumnType("bigint");
@@ -332,9 +338,49 @@ namespace Vfurniture.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MaDatHang");
+
                     b.HasIndex("MaSanPham");
 
                     b.ToTable("DatHangChiTiets");
+                });
+
+            modelBuilder.Entity("Vfurniture.Models.KhuyenMaiModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Mota")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<DateTime>("NgayBatdau")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NgayKetThuc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("PhanTramGiam")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TenKhuyenMai")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KhuyenMaiModels");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.LienHe", b =>
@@ -515,11 +561,18 @@ namespace Vfurniture.Migrations
 
             modelBuilder.Entity("Vfurniture.Models.DatHangChiTiet", b =>
                 {
+                    b.HasOne("Vfurniture.Models.DatHang", "DatHang")
+                        .WithMany("ChiTietDonHangs")
+                        .HasForeignKey("MaDatHang")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Vfurniture.Models.SanPhams", "SanPhams")
                         .WithMany()
                         .HasForeignKey("MaSanPham")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DatHang");
 
                     b.Navigation("SanPhams");
                 });
@@ -538,6 +591,11 @@ namespace Vfurniture.Migrations
             modelBuilder.Entity("Vfurniture.Models.DanhMucs", b =>
                 {
                     b.Navigation("SanPhams");
+                });
+
+            modelBuilder.Entity("Vfurniture.Models.DatHang", b =>
+                {
+                    b.Navigation("ChiTietDonHangs");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.SanPhams", b =>

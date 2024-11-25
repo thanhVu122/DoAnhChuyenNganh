@@ -37,7 +37,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Home" asp-action="Index" >
+                <a class="nav-link" asp-area=""  asp-controller="Home" asp-action="Index" >
                     <i class="fas fa-fw fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
@@ -92,8 +92,12 @@
                     <span>Phí vận chuyển</span>
                 </a>
             </li>
-          
-
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="KhuyenMai" asp-action="Index">
+                    <i class="fas fa-fw fa-ticket"></i>
+                    <span>Khuyến mãi</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 

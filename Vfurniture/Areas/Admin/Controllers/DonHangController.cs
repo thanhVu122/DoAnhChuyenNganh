@@ -18,7 +18,7 @@ namespace Vfurniture.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var datHangs = await _dataContext.DatHangs
-                .OrderByDescending(p => p.Id)
+                .OrderByDescending(p => p.MaDatHang)
                 .ToListAsync();
 
             return View(datHangs);
