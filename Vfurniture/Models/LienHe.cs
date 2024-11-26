@@ -23,6 +23,5 @@ namespace Vfurniture.Models
         public string NoiDung { get; set; }
         [Display(Name = "Ngày gửi")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-
     }
 }

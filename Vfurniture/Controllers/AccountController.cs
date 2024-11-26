@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using Vfurniture.Areas.Admin.Reponsitory;
 using Vfurniture.Models;
 using Vfurniture.Models.ViewModels;
 using Vfurniture.Reponsitory;
@@ -14,11 +15,14 @@ namespace Vfurniture.Controllers
     {
         private readonly DataContext _dataContext;
         private SignInManager<AppNguoiDung> _signInManager;
+        private readonly IEmailSender _emailSender;
 
         private UserManager<AppNguoiDung> _userManager;
-        public AccountController(SignInManager<AppNguoiDung> signInManager, UserManager<AppNguoiDung> userManager, DataContext dataContext)
+        public AccountController(SignInManager<AppNguoiDung> signInManager, UserManager<AppNguoiDung> userManager,
+            DataContext dataContext, IEmailSender emailSender)
 
         {
+            _emailSender = emailSender;
             _dataContext = dataContext;
             _signInManager = signInManager;
             _userManager = userManager;
@@ -146,17 +150,16 @@ namespace Vfurniture.Controllers
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
 
             // Lấy thông tin người dùng từ cơ sở dữ liệu
-            var user = await _userManager.Users.FirstOrDefaultAsync(o => o.Email == userEmail);
+            var user = await _dataContext.Users.FirstOrDefaultAsync(o => o.Email == userEmail);
             if (user == null)
             {
                 return NotFound();
             }
-
-            return View();
+            return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdattoInfo()
+        public async Task<IActionResult> UpdatInfo(AppNguoiDung userModel)
         {
             if (ModelState.IsValid)
             {
@@ -167,6 +170,10 @@ namespace Vfurniture.Controllers
                 {
                     return NotFound();
                 }
+                user.NgaySinh = userModel.NgaySinh;
+                user.PhoneNumber = userModel.PhoneNumber;
+                user.Email = userModel.Email;
+                user.TenNguoiDung = userModel.TenNguoiDung;
 
                 // Lưu thay đổi vào cơ sở dữ liệu
                 _dataContext.Users.Update(user);
@@ -175,8 +182,85 @@ namespace Vfurniture.Controllers
                 return RedirectToAction("UpdatInfo");
             }
 
-            return RedirectToAction("UpdattoInfo");
+            return RedirectToAction("UpdatInfo");
 
+        }
+        public async Task<IActionResult> ForgetPass()
+        {
+            return View();
+        }
+        public async Task<IActionResult> SendEmailForgetPass(AppNguoiDung nguoiDung)
+        {
+            var checkMail = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == nguoiDung.Email);
+            if (checkMail == null)
+            {
+                TempData["error"] = "Email không tồn tại";
+                return RedirectToAction("ForgetPass");
+            }
+            else
+            {
+                string token = Guid.NewGuid().ToString();
+                checkMail.token = token;
+                _dataContext.Update(checkMail);
+                await _dataContext.SaveChangesAsync();
+                var receiver = checkMail.Email;
+                var subject = "Thay đổi mật khẩu của khách hàng" + checkMail.Email;
+                var message = "Nhấn vào đây để thay đổi mật khẩu: " +
+                  $"<a href='{Request.Scheme}://{Request.Host}/Account/NewPass?email={checkMail.Email}&token={token}'>Đổi mật khẩu</a>";
+
+                await _emailSender.SendEmailAsync(receiver, subject, message);
+
+            }
+            TempData["success"] = "Đã gửi đường link bạn hãy kiểm tra email của mình";
+            return RedirectToAction("ForgetPass");
+        }
+
+        public async Task<IActionResult> NewPass(AppNguoiDung user, string token)
+        {
+            var checkUser = await _userManager.Users
+        .Where(u => u.Email == user.Email && u.token == token)
+        .FirstOrDefaultAsync();
+            if (checkUser != null)
+            {
+                ViewBag.Email = checkUser.Email;
+                ViewBag.Token = token;
+            }
+            else
+            {
+                TempData["error"] = "Email không hợp lệ";
+                return RedirectToAction("ForgetPass");
+            }
+            return View();
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> UpdateNewPass(AppNguoiDung user, string token)
+        {
+            var checkUser = await _userManager.Users
+                             .Where(u => u.Email == user.Email)
+                             .Where(u => u.token == token)
+                             .FirstOrDefaultAsync();
+            if (checkUser != null)
+            {
+                string newToken = Guid.NewGuid().ToString();
+
+                var passwordHasher = new PasswordHasher<AppNguoiDung>();
+                var passwordHash = passwordHasher.HashPassword(checkUser, user.PasswordHash);
+                checkUser.PasswordHash = passwordHash;
+                checkUser.token = newToken;
+
+                await _userManager.UpdateAsync(checkUser);
+                TempData["success"] = "Cập nhật thành công";
+                return RedirectToAction("Login");
+
+            }
+            else
+            {
+                TempData["error"] = "Cập nhật thất bại";
+                return RedirectToAction("ForgetPass");
+            }
+            return View();
         }
     }
 }

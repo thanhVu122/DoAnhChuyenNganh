@@ -7,5 +7,6 @@ namespace Vfurniture.Models
         public string RoleId { get; set; }
         public DateTime? NgaySinh { get; set; }
         public string TenNguoiDung { get; set; } // Tên người dùng
+        public string token { get; set; } 
     }
 }

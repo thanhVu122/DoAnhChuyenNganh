@@ -1,6 +1,6 @@
-﻿@model LoginViewModel
+﻿@model AppNguoiDung
 @{
-    ViewData["Title"] = "Đăng nhập";
+    ViewData["Title"] = "Lấy lại mật khẩu";
 
 }
 
@@ -9,7 +9,7 @@
         <div class="row g-0">
             <div class="col-sm-6 col-md-6">
                 <div class="inner">
-                    <h2>Khách hàng mới</h2>
+                    <h2>Lấy lại mật khẩu</h2>
                     <div class="thongbao">
                         <p>
                             <b>Đăng ký tài khoản</b>
@@ -24,23 +24,23 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 ">
-            
+
                 <div class="dangnhap">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <form action="Login" method="post">
-                        <h4>Đăng nhập</h4>
+                    <form action="UpdateNewPass" method="post">
+                        <input type="hidden" name="token" value="@ViewBag.Token" />
+                        <h4>Lấy lại mật khẩu</h4>
                         <div class="from-group">
-                            <label asp-for="TaiKhoan"></label>
-                            <input asp-for="TaiKhoan" placeholder="Tài khoản" class="form-control" />
-                            <span class="text-danger" asp-validation-for="TaiKhoan"></span>
+                            <label asp-for="Email"></label>
+                            <input readonly asp-for="Email" value="@ViewBag.Email" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
                         </div>
                         <div class="from-group">
-                            <label asp-for="MatKhau"></label>
-                            <input asp-for="MatKhau" placeholder="Mật khẩu" class="form-control" type="password" />
-                            <span class="text-danger" asp-validation-for="MatKhau"></span>
+                            <label>Mật khẩu</label>
+                            <input asp-for="PasswordHash" placeholder="Mật khẩu" class="form-control" type="password" />
+                            <span class="text-danger" asp-validation-for="PasswordHash"></span>
                         </div>
-                        <button class="btn btn-default">Đăng nhập</button>
-                        <p><a asp-action="ForgetPass" class="quenmk">Quên mật khẩu?</a></p>
+                        <button class="btn btn-default">Gui</button>
                     </form>
                 </div>
             </div>

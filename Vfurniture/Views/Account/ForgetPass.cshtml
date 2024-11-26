@@ -1,6 +1,6 @@
-﻿@model LoginViewModel
+﻿@model AppNguoiDung
 @{
-    ViewData["Title"] = "Đăng nhập";
+    ViewData["Title"] = "Quên mật khẩu";
 
 }
 
@@ -9,7 +9,7 @@
         <div class="row g-0">
             <div class="col-sm-6 col-md-6">
                 <div class="inner">
-                    <h2>Khách hàng mới</h2>
+                    <h2>Quên mật khẩu</h2>
                     <div class="thongbao">
                         <p>
                             <b>Đăng ký tài khoản</b>
@@ -24,23 +24,17 @@
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 ">
-            
+          
                 <div class="dangnhap">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <form action="Login" method="post">
-                        <h4>Đăng nhập</h4>
+                    <form action="SendEmailForgetPass" method="post">
+                        <h4>Quên mật khẩu</h4>
                         <div class="from-group">
-                            <label asp-for="TaiKhoan"></label>
-                            <input asp-for="TaiKhoan" placeholder="Tài khoản" class="form-control" />
-                            <span class="text-danger" asp-validation-for="TaiKhoan"></span>
-                        </div>
-                        <div class="from-group">
-                            <label asp-for="MatKhau"></label>
-                            <input asp-for="MatKhau" placeholder="Mật khẩu" class="form-control" type="password" />
-                            <span class="text-danger" asp-validation-for="MatKhau"></span>
-                        </div>
-                        <button class="btn btn-default">Đăng nhập</button>
-                        <p><a asp-action="ForgetPass" class="quenmk">Quên mật khẩu?</a></p>
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" placeholder="Tài khoản" class="form-control" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>   
+                        <button class="btn btn-default">Gui</button>             
                     </form>
                 </div>
             </div>

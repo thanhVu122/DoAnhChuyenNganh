@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using Vfurniture.Models;
 using Vfurniture.Reponsitory;
 
@@ -9,29 +7,32 @@ namespace Vfurniture.Controllers
     public class LienHeController : Controller
     {
         private readonly DataContext _dataContext;
+
         public LienHeController(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
-        [HttpGet]
-        public async Task< IActionResult> ListLienHeIndex()
+
+        // GET: /LienHe/Create
+        public IActionResult Create()
         {
-            var lienhe = _dataContext.LienHes.ToList();
-            return View(lienhe);
+            return View();
         }
+
+        // POST: /LienHe/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(LienHe contact)
+        public async Task<IActionResult> Create(LienHe lienHe)
         {
             if (ModelState.IsValid)
             {
-                _dataContext.LienHes.Add(contact);
-                _dataContext.SaveChanges();
-
-                TempData["Success"] = "Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.";
-                return RedirectToAction("Index");
+                // Save the contact form submission to the database
+                _dataContext.LienHes.Add(lienHe);
+                await _dataContext.SaveChangesAsync();
+                TempData["success"] = "Cảm ơn bạn đã liên hệ với chúng tôi!";
+                return RedirectToAction("Create");
             }
-            return View(contact);
+            return View(lienHe);
         }
     }
 }
