@@ -1,0 +1,58 @@
+﻿ @* @model IEnumerable<Vfurniture.Models.DatHangChiTiet>
+ @{
+     ViewData["Title"] = "Xác Nhận Đơn Hàng";
+ }
+
+ <div class="container mt-5">
+     <h1 class="text-center">Xác Nhận Đơn Hàng</h1>
+     <div class="row">
+         <div class="col-md-6">
+             <h4>Thông tin khách hàng</h4>
+             <ul>
+                 <li><strong>Email:</strong> @ViewBag.OrderItem.TenNguoiDat</li>
+                 <li><strong>Địa chỉ:</strong> @ViewBag.OrderItem.DiaChiCuThe</li>
+                 <li><strong>Tỉnh:</strong> @ViewBag.OrderItem.Tinh</li>
+                 <li><strong>Quận:</strong> @ViewBag.OrderItem.Quan</li>
+                 <li><strong>Phường:</strong> @ViewBag.OrderItem.Phuong</li>
+                 <li><strong>Giá Vận Chuyển:</strong> @ViewBag.OrderItem.GiaShip.ToString("C")</li>
+             </ul>
+         </div>
+         <div class="col-md-6">
+             <h4>Chi Tiết Đơn Hàng</h4>
+             <table class="table table-bordered">
+                 <thead>
+                     <tr>
+                         <th>Tên Sản Phẩm</th>
+                         <th>Giá</th>
+                         <th>Số Lượng</th>
+                         <th>Tổng</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     @foreach (var item in ViewBag.OrderDetails)
+                     {
+                         <tr>
+                             <td>@item.MaSanPham</td>
+                             <td>@item.Gia.ToString("C")</td>
+                             <td>@item.SoLuong</td>
+                             <td>@(item.Gia * item.SoLuong).ToString("C")</td>
+                         </tr>
+                     }
+                 </tbody>
+             </table>
+             <hr />
+             <h4>Tổng cộng: @ViewBag.OrderItem.GiaShip.ToString("C")</h4>
+         </div>
+     </div>
+
+     <div class="text-center">
+         <form method="post" action="@Url.Action("Checkout", "Checkout")">
+             <input type="hidden" name="tinh" value="@ViewBag.OrderItem.Tinh" />
+             <input type="hidden" name="quan" value="@ViewBag.OrderItem.Quan" />
+             <input type="hidden" name="phuong" value="@ViewBag.OrderItem.Phuong" />
+             <input type="hidden" name="DiaChiCuThe" value="@ViewBag.OrderItem.DiaChiCuThe" />
+             <button type="submit" class="btn btn-primary">Xác Nhận Đơn Hàng</button>
+         </form>
+     </div>
+ </div>
+ *@

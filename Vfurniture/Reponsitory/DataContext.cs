@@ -19,6 +19,8 @@ namespace Vfurniture.Reponsitory
         public DbSet<LienHe> LienHes { get; set; }
         public DbSet<VanChuyen> VanChuyens { get; set; }
         public DbSet<KhuyenMaiModel> KhuyenMaiModels { get; set; }
+        //public DbSet<GioHangsModel> GioHangs { get; set; }
+        public DbSet<NguoiDungModel> NguoiDungs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Cấu hình các mối quan hệ hoặc các ràng buộc nếu cần.
@@ -33,6 +35,13 @@ namespace Vfurniture.Reponsitory
                 .WithOne(ct => ct.DatHang)
                 .HasForeignKey(ct => ct.MaDatHang)
                 .OnDelete(DeleteBehavior.Cascade);
+
+          //  modelBuilder.Entity<DatHang>()
+          //.HasOne(dh => dh.NguoiDung)
+          //.WithMany(nd => nd.DatHangs)
+          //.HasForeignKey(dh => dh.MaNguoiDung)
+          //.OnDelete(DeleteBehavior.Cascade); // Xóa người dùng sẽ xóa tất cả các đơn hàng của họ
+
 
             base.OnModelCreating(modelBuilder);
         }

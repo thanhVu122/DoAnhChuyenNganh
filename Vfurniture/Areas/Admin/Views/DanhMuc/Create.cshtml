@@ -21,7 +21,12 @@
                     <div class="form-group">
                         <label asp-for="MaDanhMuc"></label>
                         <input asp-for="MaDanhMuc" class="form-control" placeholder="Mã danh mục" />
-                        <span asp-validation-for="MaDanhMuc" class="text-danger"></span>
+                        @if (ViewData.ModelState.ContainsKey("MaDanhMuc") && ViewData.ModelState["MaDanhMuc"].Errors.Count > 0)
+                        {
+                            <div class="text-danger">
+                                @ViewData.ModelState["MaDanhMuc"].Errors[0].ErrorMessage
+                            </div>
+                        }
                     </div>
 
                     <!-- Tên danh mục -->
@@ -56,7 +61,6 @@
 
 @section Scripts {
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-
+        await Html.RenderPartialAsync("_AdminValidation");
     }
 }

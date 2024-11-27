@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vfurniture.Reponsitory;
 
@@ -11,9 +12,10 @@ using Vfurniture.Reponsitory;
 namespace Vfurniture.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20241127070217_addDiaChiDatHang")]
+    partial class addDiaChiDatHang
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -305,9 +307,6 @@ namespace Vfurniture.Migrations
                     b.Property<string>("MaKhuyenMai")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MaNguoiDung")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("NgayTao")
                         .HasColumnType("datetime2");
 
@@ -327,8 +326,6 @@ namespace Vfurniture.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("MaDatHang");
-
-                    b.HasIndex("MaNguoiDung");
 
                     b.ToTable("DatHangs");
                 });
@@ -432,43 +429,6 @@ namespace Vfurniture.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LienHes");
-                });
-
-            modelBuilder.Entity("Vfurniture.Models.NguoiDungModel", b =>
-                {
-                    b.Property<int>("MaNguoiDung")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaNguoiDung"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MatKhau")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("NgaySinh")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Quyen")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SoDienThoai")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TaiKhoan")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenNguoiDung")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MaNguoiDung");
-
-                    b.ToTable("NguoiDungs");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.SanPhams", b =>
@@ -616,17 +576,6 @@ namespace Vfurniture.Migrations
                     b.Navigation("SanPham");
                 });
 
-            modelBuilder.Entity("Vfurniture.Models.DatHang", b =>
-                {
-                    b.HasOne("Vfurniture.Models.NguoiDungModel", "NguoiDung")
-                        .WithMany("DatHangs")
-                        .HasForeignKey("MaNguoiDung")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NguoiDung");
-                });
-
             modelBuilder.Entity("Vfurniture.Models.DatHangChiTiet", b =>
                 {
                     b.HasOne("Vfurniture.Models.DatHang", "DatHang")
@@ -664,11 +613,6 @@ namespace Vfurniture.Migrations
             modelBuilder.Entity("Vfurniture.Models.DatHang", b =>
                 {
                     b.Navigation("ChiTietDonHangs");
-                });
-
-            modelBuilder.Entity("Vfurniture.Models.NguoiDungModel", b =>
-                {
-                    b.Navigation("DatHangs");
                 });
 
             modelBuilder.Entity("Vfurniture.Models.SanPhams", b =>

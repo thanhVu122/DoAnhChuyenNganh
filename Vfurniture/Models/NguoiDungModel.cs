@@ -33,5 +33,6 @@ namespace Vfurniture.Models
         [DisplayName("Số điện thoại")]
         public string SoDienThoai { get; set; } // Số điện thoại
         public string Quyen { get; set; } // Quyền của người dùng
+        //public ICollection<DatHang> DatHangs { get; set; }
     }
 }

@@ -3,9 +3,15 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Vfurniture.Areas.Admin.Reponsitory;
 using Vfurniture.Models;
+using Vfurniture.Models.Momo;
 using Vfurniture.Reponsitory;
+using Vfurniture.Service.Momo;
 
 var builder = WebApplication.CreateBuilder(args);
+// connect MOMO
+builder.Services.Configure<MomoOptionModel>(builder.Configuration.GetSection("MomoAPI"));
+builder.Services.AddScoped<IMomoService, MomoService>();
+
 builder.Services.Configure<RazorViewEngineOptions>(options =>
 {
     // Clears the default area view location formats.
@@ -33,6 +39,7 @@ builder.Services.AddSession(options =>
 	options.Cookie.IsEssential = true;
 }
 );
+
 //khai bao identity
 builder.Services.AddIdentity<AppNguoiDung,IdentityRole>()
     .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();

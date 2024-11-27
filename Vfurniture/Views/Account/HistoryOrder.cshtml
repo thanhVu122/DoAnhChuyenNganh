@@ -21,6 +21,7 @@
                                 <tr>
                                     <th>Mã đơn hàng</th>
                                     <th>Ngày đặt</th>
+                                    <th>Địa chỉ</th>
                                     <th>Trạng thái</th>
                                     <th>Chi tiết</th>
                                 </tr>
@@ -31,7 +32,7 @@
                                     <tr>
                                         <td>@order.MaDatHang</td>
                                         <td>@order.NgayTao.ToString("dd/MM/yyyy")</td>
-
+                                        <td>@order.DiaChiCuThe, @order.Phuong, @order.Quan, @order.Tinh</td>
                                         <td>
                                             @if (order.TrangThai == 1)
                                             {

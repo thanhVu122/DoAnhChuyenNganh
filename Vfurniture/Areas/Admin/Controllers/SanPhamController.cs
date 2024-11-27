@@ -23,6 +23,7 @@ namespace Vfurniture.Areas.Admin.Controllers
         {
             var sanPhams = await _dataContext.SanPhams
                 .Include(p => p.DanhMuc)
+                
                 .ToListAsync();
 
             return View(sanPhams);

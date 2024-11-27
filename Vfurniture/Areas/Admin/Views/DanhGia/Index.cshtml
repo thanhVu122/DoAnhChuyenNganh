@@ -44,14 +44,18 @@
                                             <td>@item.MoTa</td>
 
                                             <td>
-                                                @if (item.TrangThai == 1)
-                                                {
-                                                    <span class="text-success">Hiện thị</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="text-danger">Không hiện thị</span>
-                                                }
+                                                <select class="form-control" name="TrangThai_@item.Id" onchange="updateTrangThai(@item.Id)">
+                                                    @if (item.TrangThai == 1)
+                                                    {
+                                                        <option value="1" selected>Hiển thị</option>
+                                                        <option value="0">Không hiển thị</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="1">Hiển thị</option>
+                                                        <option value="0" selected>Không hiển thị</option>
+                                                    }
+                                                </select>
                                             </td>
 
                                         </tr>
@@ -68,3 +72,30 @@
     </div>
 
 </div>
+
+<script>
+    function updateTrangThai(id) {
+        var trangThai = $("select[name='TrangThai_" + id + "']").val(); // Lấy giá trị mới từ select
+
+        // Gửi yêu cầu AJAX đến Controller để cập nhật trạng thái
+        $.ajax({
+            url: '@Url.Action("UpdateTrangThai", "DanhGia")', // Đảm bảo đường dẫn này đúng
+            type: 'POST',
+            data: {
+                id: id,
+                trangThai: trangThai
+            },
+            success: function (response) {
+                // Xử lý kết quả trả về từ controller (nếu cần)
+                if (response.success) {
+                    alert("Cập nhật trạng thái thành công");
+                } else {
+                    alert("Có lỗi khi cập nhật trạng thái");
+                }
+            },
+            error: function () {
+                alert("Có lỗi xảy ra trong quá trình cập nhật");
+            }
+        });
+    }
+</script>

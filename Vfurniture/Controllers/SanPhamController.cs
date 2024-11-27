@@ -13,9 +13,10 @@ namespace Vfurniture.Controllers
         {
             _dataContext = dataContext;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var Products = await _dataContext.SanPhams.Where(p => p.TrangThai == true).ToListAsync();
+            return View(Products);
         }
 
         public async Task<IActionResult> Deltail(int id)

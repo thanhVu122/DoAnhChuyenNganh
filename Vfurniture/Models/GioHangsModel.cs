@@ -2,6 +2,7 @@
 {
     public class GioHangsModel
     {
+
         public string SanphamName { get; set; }
         public long SanphamId { get; set; }
         public int SoLuong { get; set; }
