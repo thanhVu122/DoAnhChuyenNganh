@@ -1,0 +1,56 @@
+﻿@model MomoInfoModel
+
+
+@{
+    ViewData["title"] = "Thông tin đơn hàng qua Momo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Thông tin đơn hàng qua Momo</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Bảng thông tin đơn hàng qua Momog</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th>ID</th>
+                                        <th>Mã đơn hàng qua Momo</th>
+                                        <th>Tên người đặt hàng</th>
+                                        <th>Số tiền đã thanh toán</th>
+                                        <th>Ngày thanh toán</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>@Model.Id</td>
+                                        <td>@Model.OrderId</td>
+                                        <td>@Model.FullName</td>
+                                        <td>@Model.Amount</td>
+                                        <td>@Model.DatePaid</td>
+                                    </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

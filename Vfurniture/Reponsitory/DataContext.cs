@@ -18,9 +18,10 @@ namespace Vfurniture.Reponsitory
         public DbSet<DanhGia> DanhGias { get; set; }
         public DbSet<LienHe> LienHes { get; set; }
         public DbSet<VanChuyen> VanChuyens { get; set; }
+        public DbSet<MomoInfoModel> MomoInfos { get; set; }
         public DbSet<KhuyenMaiModel> KhuyenMaiModels { get; set; }
         //public DbSet<GioHangsModel> GioHangs { get; set; }
-        public DbSet<NguoiDungModel> NguoiDungs { get; set; }
+        //public DbSet<NguoiDungModel> NguoiDungs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Cấu hình các mối quan hệ hoặc các ràng buộc nếu cần.

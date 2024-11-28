@@ -6,6 +6,6 @@ namespace Vfurniture.Service.Momo
     public interface IMomoService
     {
         Task<MomoCreatePaymentResponseModel> MomoCreatePayment(OrderInfoModel model);
-        MomoExecuteResponseModel PayExecuteAsync(IQueryCollection collection);
+        MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection);
     }
 }

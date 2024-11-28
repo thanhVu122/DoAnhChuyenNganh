@@ -1,0 +1,9 @@
+﻿@model Vfurniture.Models.Momo.MomoExecuteResponseModel 
+@{
+    ViewData["title"] = "Ket qua";      
+}
+
+<h5>Thanh toan thanh cong voi: </h5>
+<h6>OrderId: @Model.OrderId</h6>
+<h6> Amoutn: @Model.Amount</h6>
+<a asp-action="HistoryOrder" asp-controller="Account"><h2>Xem lich su don hang</h2> </a>

@@ -62,12 +62,12 @@ namespace Vfurniture.Service.Momo
             return JsonConvert.DeserializeObject<MomoCreatePaymentResponseModel>(response.Content);
 
         }
-        public MomoExecuteResponseModel PayExecuteAsync(IQueryCollection collection)
+        public MomoExecuteResponseModel PaymentExecuteAsync(IQueryCollection collection)
         {
             var amount = collection.First(s => s.Key == "amount").Value;
             var orderInfo = collection.First(s => s.Key == "orderInfo").Value;
             var orderId = collection.First(s => s.Key == "orderId").Value;
-            return new MomoExecuteResponseModel
+            return new MomoExecuteResponseModel()
             {
                 Amount = amount,
                 OrderId = orderId,

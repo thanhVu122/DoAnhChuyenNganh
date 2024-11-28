@@ -1,15 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Vfurniture.Models;
+using Vfurniture.Reponsitory;
 using Vfurniture.Service.Momo;
 
 namespace Vfurniture.Controllers
 {
     public class PaymentController : Controller
     {
-        private IMomoService _momoService;
+        private readonly IMomoService _momoService;
+        
         public PaymentController(IMomoService momoService)
         {
             _momoService = momoService;
+          
         }
 
         [HttpPost]
@@ -25,7 +29,7 @@ namespace Vfurniture.Controllers
         [HttpGet]
         public IActionResult PaymentCallBack()
         {
-            var response = _momoService.PayExecuteAsync(HttpContext.Request.Query);
+            var response = _momoService.PaymentExecuteAsync(HttpContext.Request.Query);
             return View(response);
         }
     }

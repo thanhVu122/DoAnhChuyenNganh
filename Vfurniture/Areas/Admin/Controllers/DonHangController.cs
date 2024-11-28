@@ -66,7 +66,17 @@ namespace Vfurniture.Areas.Admin.Controllers
                 return StatusCode(500, "Đã có lỗi");
             }
         }
-
+        [HttpGet]
+        [Route("PaymentMomoInfo")]
+        public async Task<IActionResult> PaymentMomoInfo(string orderId)
+        {
+            var momoInfo=await _dataContext.MomoInfos.FirstOrDefaultAsync(o => o.OrderId==orderId);
+            if (momoInfo == null)
+            {
+                return NotFound();
+            }
+            return View(momoInfo);
+        }
 
 
     }

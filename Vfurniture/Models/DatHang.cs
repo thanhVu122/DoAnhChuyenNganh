@@ -17,6 +17,8 @@ namespace Vfurniture.Models
         public string Quan { get; set; }  // Quận/Huyện
         public string Phuong { get; set; } // Phường/Xã
         public string DiaChiCuThe { get; set; } // Địa chỉ cụ
+
+        public string? PhuongThucThanhToan {  get; set; }    
         //[ForeignKey("NguoiDung")]
         //public int MaNguoiDung { get; set; } // Khóa ngoại liên kết với NguoiDungModel
         //public virtual NguoiDungModel NguoiDung { get; set; } // Navigation property

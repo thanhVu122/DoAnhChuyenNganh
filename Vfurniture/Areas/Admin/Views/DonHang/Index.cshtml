@@ -26,6 +26,7 @@
                                         <th>Tên người đặt hàng</th>
                                         <th>Mã đơn hàng</th>
                                         <th>Địa chỉ</th>
+                                        <th>Phương thức thanh toán</th>
                                         <th>Ngày tạo</th>
                                         <th>Trạng thái</th>
                                         <th>Tác vụ </th>
@@ -41,6 +42,16 @@
                                             <td>@item.TenNguoiDat</td>
                                             <td>@item.MaDatHang</td>
                                             <td>@item.DiaChiCuThe,@item.Phuong,@item.Quan,@item.Tinh</td>
+                                            <td>
+                                                @if (item.PhuongThucThanhToan == null || item.PhuongThucThanhToan == "COD")
+                                                {
+                                                    <span class="text text-uppercase">@item.PhuongThucThanhToan</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text text-gray-600">MOMO: <a class="text text-secondary" asp-route-orderId="@item.PhuongThucThanhToan" asp-action="PaymentMomoInfo" asp-controller="DonHang"> @item.PhuongThucThanhToan</a></span>
+                                                }
+                                            </td>
                                             <td>@item.NgayTao</td>
                                     
                                             <td>
