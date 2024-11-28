@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Vfurniture.Models;
 using Vfurniture.Reponsitory;
 using Newtonsoft.Json;
@@ -179,30 +180,30 @@ namespace Vfurniture.Controllers
         }
 
 
-    //    [HttpPost]
-    //    public IActionResult ApplyCoupon(string couponCode)
-    //    {
-    //        var viewModel = GetGioHangsViewModel();  // Lấy thông tin giỏ hàng từ phương thức JSON
+        //    [HttpPost]
+        //    public IActionResult ApplyCoupon(string couponCode)
+        //    {
+        //        var viewModel = GetGioHangsViewModel();  // Lấy thông tin giỏ hàng từ phương thức JSON
 
-    //        var khuyenMai = _dataContext.KhuyenMaiModels
-    //            .FirstOrDefault(km => km.TenKhuyenMai == "cho");
+        //        var khuyenMai = _dataContext.KhuyenMaiModels
+        //            .FirstOrDefault(km => km.TenKhuyenMai == "cho");
 
-    //        if (khuyenMai != null && khuyenMai.TrangThai && khuyenMai.NgayBatdau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
-    //        {
-    //            viewModel.MaKhuyenMai = couponCode;
-    //            viewModel.TienGiamGia = (viewModel.GioHangsTotal * khuyenMai.PhanTramGiam) / 100;
-    //            TempData["CouponMessage"] = "Mã khuyến mãi đã được áp dụng.";
-    //        }
-    //        else
-    //        {
-    //            TempData["CouponMessage"] = "Mã khuyến mãi không hợp lệ hoặc đã hết hạn.";
-    //        }
+        //        if (khuyenMai != null && khuyenMai.TrangThai && khuyenMai.NgayBatdau <= DateTime.Now && khuyenMai.NgayKetThuc >= DateTime.Now)
+        //        {
+        //            viewModel.MaKhuyenMai = couponCode;
+        //            viewModel.TienGiamGia = (viewModel.GioHangsTotal * khuyenMai.PhanTramGiam) / 100;
+        //            TempData["CouponMessage"] = "Mã khuyến mãi đã được áp dụng.";
+        //        }
+        //        else
+        //        {
+        //            TempData["CouponMessage"] = "Mã khuyến mãi không hợp lệ hoặc đã hết hạn.";
+        //        }
 
-    //        // Lưu giỏ hàng đã cập nhật vào session dưới dạng JSON
-    //        HttpContext.Session.SetJson("GioHang", viewModel.GioHangs);
+        //        // Lưu giỏ hàng đã cập nhật vào session dưới dạng JSON
+        //        HttpContext.Session.SetJson("GioHang", viewModel.GioHangs);
 
-    //        return RedirectToAction("Index");
-    //    }
+        //        return RedirectToAction("Index");
+        //    }
 
     }
 }

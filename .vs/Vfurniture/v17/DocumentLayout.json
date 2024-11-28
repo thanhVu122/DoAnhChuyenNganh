@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "D:\\DoAn2024-2025\\Vfurniture\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\service\\momo\\momoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\service\\momo\\momoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\service\\momo\\imomoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\service\\momo\\imomoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\models\\momo\\momoexecuteresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\models\\momo\\momoexecuteresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\models\\momo\\momooptionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\models\\momo\\momooptionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\views\\giohang\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\views\\giohang\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\models\\viewmodels\\giohangsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\models\\viewmodels\\giohangsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|d:\\doan2024-2025\\vfurniture\\vfurniture\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0FE373D1-64BB-4D3F-90AF-F84C808C76F3}|Vfurniture\\Vfurniture.csproj|solutionrelative:vfurniture\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,21 +34,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 202,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Views\\GioHang\\Index.cshtml",
               "RelativeDocumentMoniker": "Vfurniture\\Views\\GioHang\\Index.cshtml",
               "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Views\\GioHang\\Index.cshtml",
               "RelativeToolTip": "Vfurniture\\Views\\GioHang\\Index.cshtml",
-              "ViewState": "AgIAAL8AAAAAAAAAAADwv8oAAAB9AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-27T17:48:44.498Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Bookmark",
@@ -71,68 +75,80 @@
               "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IMomoService.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Service\\Momo\\IMomoService.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Service\\Momo\\IMomoService.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Service\\Momo\\IMomoService.cs",
-              "RelativeToolTip": "Vfurniture\\Service\\Momo\\IMomoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T18:33:23.286Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MomoService.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Service\\Momo\\MomoService.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Service\\Momo\\MomoService.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Service\\Momo\\MomoService.cs",
-              "RelativeToolTip": "Vfurniture\\Service\\Momo\\MomoService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Program.cs",
+              "RelativeDocumentMoniker": "Vfurniture\\Program.cs",
+              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Program.cs",
+              "RelativeToolTip": "Vfurniture\\Program.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAAG0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T18:33:22.54Z",
+              "WhenOpened": "2024-11-28T10:09:25.712Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MomoExecuteResponseModel.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\Momo\\MomoExecuteResponseModel.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Models\\Momo\\MomoExecuteResponseModel.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\Momo\\MomoExecuteResponseModel.cs",
-              "RelativeToolTip": "Vfurniture\\Models\\Momo\\MomoExecuteResponseModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
+              "Title": "GioHangController.cs",
+              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\GioHangController.cs",
+              "RelativeDocumentMoniker": "Vfurniture\\Controllers\\GioHangController.cs",
+              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\GioHangController.cs",
+              "RelativeToolTip": "Vfurniture\\Controllers\\GioHangController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAHgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T18:19:26.866Z",
+              "WhenOpened": "2024-11-28T10:01:48.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CheckoutController.cs",
+              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\CheckoutController.cs",
+              "RelativeDocumentMoniker": "Vfurniture\\Controllers\\CheckoutController.cs",
+              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\CheckoutController.cs",
+              "RelativeToolTip": "Vfurniture\\Controllers\\CheckoutController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T03:15:54.988Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MomoOptionModel.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\Momo\\MomoOptionModel.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Models\\Momo\\MomoOptionModel.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\Momo\\MomoOptionModel.cs",
-              "RelativeToolTip": "Vfurniture\\Models\\Momo\\MomoOptionModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "GioHangsViewModel.cs",
+              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\ViewModels\\GioHangsViewModel.cs",
+              "RelativeDocumentMoniker": "Vfurniture\\Models\\ViewModels\\GioHangsViewModel.cs",
+              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Models\\ViewModels\\GioHangsViewModel.cs",
+              "RelativeToolTip": "Vfurniture\\Models\\ViewModels\\GioHangsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T18:33:07.148Z",
+              "WhenOpened": "2024-11-28T05:47:30.921Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "PaymentController.cs",
-              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\PaymentController.cs",
-              "RelativeDocumentMoniker": "Vfurniture\\Controllers\\PaymentController.cs",
-              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\Controllers\\PaymentController.cs",
-              "RelativeToolTip": "Vfurniture\\Controllers\\PaymentController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAqwBQAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T17:56:38.199Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\appsettings.json",
+              "RelativeDocumentMoniker": "Vfurniture\\appsettings.json",
+              "ToolTip": "D:\\DoAn2024-2025\\Vfurniture\\Vfurniture\\appsettings.json",
+              "RelativeToolTip": "Vfurniture\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-28T04:56:44.09Z",
               "EditorCaption": ""
             }
           ]

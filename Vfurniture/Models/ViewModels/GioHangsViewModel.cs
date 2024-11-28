@@ -8,5 +8,6 @@
         public decimal TongThanhToan => GioHangsTotal + GiaVanChuyen - TienGiamGia;
         public string? MaKhuyenMai { get; set; }
         public decimal TienGiamGia { get; set; }
+
     }
 }
