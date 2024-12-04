@@ -16,6 +16,7 @@ namespace Vfurniture.Controllers
 
         public async Task<IActionResult> Index(string Sort_by, string maDM = "")
         {
+            ViewBag.tendanhmuc=_dataContext.DanhGias.ToList();
 
             DanhMucs danhMucs = _dataContext.DanhMucs.Where(c => c.MaDanhMuc == maDM).FirstOrDefault();
 

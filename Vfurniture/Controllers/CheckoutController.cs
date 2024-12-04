@@ -78,13 +78,14 @@ namespace Vfurniture.Controllers
 
                 }
                 HttpContext.Session.Remove("GioHang");
+                HttpContext.Response.Cookies.Delete("GiaVanChuyen");
                 //Send mail 
                 var receiver = userEmail;
                 var subject = "Đặt hàng thành công";
                 var message = "Chúng tôi cảm ơn bạn đã mua sắm trên VFurniture. Đơn hàng của bạn đang được xử lý.";
                 await _emailSender.SendEmailAsync(receiver, subject, message);
                 TempData["success"] = "Đơn hàng đã được tạo.Chờ xử lý";
-                return RedirectToAction("HistoryOrder", "Acccount");
+                return RedirectToAction("HistoryOrder", "Account");
             }
         }
 
@@ -121,6 +122,7 @@ namespace Vfurniture.Controllers
                 TempData["success"] = "Giao dich khong thanh cong";
                 return RedirectToAction("Index","GioHang");
             }
+            HttpContext.Response.Cookies.Delete("GiaVanChuyen");
             return View(response);
         }
     }

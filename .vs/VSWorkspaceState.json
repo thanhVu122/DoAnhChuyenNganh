@@ -5,7 +5,9 @@
     "\\Vfurniture\\Areas",
     "\\Vfurniture\\Areas\\Admin",
     "\\Vfurniture\\Areas\\Admin\\Controllers",
-    "\\Vfurniture\\Controllers"
+    "\\Vfurniture\\Controllers",
+    "\\Vfurniture\\Views",
+    "\\Vfurniture\\Views\\GioHang"
   ],
   "SelectedNode": "\\Vfurniture.sln",
   "PreviewInSolutionExplorer": false

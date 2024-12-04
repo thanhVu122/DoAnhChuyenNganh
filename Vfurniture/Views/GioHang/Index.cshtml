@@ -125,7 +125,16 @@
                                 {
                                     if (Model.GioHangsTotal > 0)
                                     {
-                                        <button type="submit" class="btn btn-success btn-rounded mt-4" data-mdb-ripple-init>Hoàn tất đơn hàng</button>
+                                        if (Model.GiaVanChuyen < 0)
+                                        {
+                                            <button type="submit" disabled="disabled" class="btn btn-success btn-rounded mt-4" data-mdb-ripple-init>Hoàn tất đơn hàng</button>
+                                            <span class="text text-danger">Vui lòng tình phí ship</span>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-success btn-rounded mt-4" data-mdb-ripple-init>Hoàn tất đơn hàng</button>
+                                        }
+
                                     }
                                 }
                             </form>
@@ -133,7 +142,7 @@
                     </div>
 
                     <a class="countine_order_cart" title="Tiếp tục mua hàng" asp-controller="Home" asp-action="index"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
-                </div>              
+                </div>
             </div>
 
             <div class="col-md-6 col-xs-12 col-sm-6">
@@ -225,7 +234,7 @@
     <script>
         $(document).ready(function () {
             // Xóa giá trị phí vận chuyển khi trang tải lại
-                
+
 
 
             $(".btn-add-shipping").click(function () {
@@ -238,7 +247,7 @@
                 if (tinh === "Tỉnh Thành" || quan === "Quận Huyện" || phuong === "Phường Xã") {
                     Swal.fire("Vui lòng chọn đầy đủ Tỉnh, Quận, Phường.");
                 } else {
-         
+
                     $.ajax({
                         type: "POST",
                         url: "/GioHang/GetShipping",
@@ -320,7 +329,7 @@
         });
 
 
-                success: function (response) {
+        success: function (response) {
             if (response) {
                 $("#giaVanChuyen").text(response.giaVanChuyen.toLocaleString('vi-VN') + "đ");
                 var tongThanhToan = response.gioHangsTotal + response.giaVanChuyen - response.tienGiamGia;

@@ -23,7 +23,7 @@ namespace Vfurniture.Areas.Admin.Controllers
         {
             var sanPhams = await _dataContext.SanPhams
                 .Include(p => p.DanhMuc)
-                
+
                 .ToListAsync();
 
             return View(sanPhams);
@@ -111,19 +111,28 @@ namespace Vfurniture.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteCf(long Id)
         {
+            //check khoas ngoai
+            var isProductInOrder = await _dataContext.DatHangChiTiets.AnyAsync(a => a.MaSanPham == Id);
+            if (isProductInOrder)
+            {
+                TempData["error"] = "Không thể xóa sản phẩm vì nó đang được liên kết với đơn đặt hàng.";
+                return RedirectToAction("Index");
+            }
             var move = await _dataContext.SanPhams.FindAsync(Id);
             if (move != null)
             {
                 _dataContext.Remove(move);
             }
             await _dataContext.SaveChangesAsync();
-            TempData["Success"] = "Sản phẩm đã được xóa thành công.";
+            TempData["success"] = "Sản phẩm đã được xóa thành công.";
             return RedirectToAction("Index");
 
         }
         [HttpGet]
         public async Task<IActionResult> Edit(long id)
         {
+
+
             var sanPham = await _dataContext.SanPhams.FindAsync(id);
             if (sanPham == null)
             {
@@ -194,6 +203,13 @@ namespace Vfurniture.Areas.Admin.Controllers
                 }
 
                 sanPhamDb.DanhSachHinhAnh = string.Join(",", danhSachHinhAnh); // Cập nhật danh sách hình ảnh
+            }
+
+            var CheckSanPham = await _dataContext.SanPhams.FirstOrDefaultAsync(a => a.TenSanPham == sanPhamDb.TenSanPham);
+            if (CheckSanPham != null)
+            {
+                TempData["Error"] = "Tên sản phẩm đã tồn tại. Vui lòng chọn tên khác.";
+                return RedirectToAction("Edit");
             }
 
             _dataContext.Update(sanPhamDb);

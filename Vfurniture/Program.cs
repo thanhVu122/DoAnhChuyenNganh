@@ -42,7 +42,10 @@ builder.Services.AddSession(options =>
 
 //khai bao identity
 builder.Services.AddIdentity<AppNguoiDung,IdentityRole>()
-    .AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<DataContext>()
+    .AddDefaultTokenProviders()
+    .AddErrorDescriber<CustomIdentityErrorDescriber>();
+
 
 
 builder.Services.Configure<IdentityOptions>(options =>

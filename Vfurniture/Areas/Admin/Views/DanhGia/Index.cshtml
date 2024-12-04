@@ -28,6 +28,7 @@
                                         <th>Tên người đánh giá</th>
                                         <th>Email</th>
                                         <th>Nội dung</th>
+                                        <th>Mã sản phẩm</th>
                                         <th>Trạng thái</th>
 
                                     </tr>
@@ -42,7 +43,7 @@
                                             <td>@item.TenNguoiDanhGia</td>
                                             <td>@item.Email</td>
                                             <td>@item.MoTa</td>
-
+                                            <td>@item.MaSanPham</td>
                                             <td>
                                                 <select class="form-control" name="TrangThai_@item.Id" onchange="updateTrangThai(@item.Id)">
                                                     @if (item.TrangThai == 1)
